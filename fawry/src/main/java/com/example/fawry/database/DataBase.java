@@ -1,5 +1,7 @@
 package com.example.fawry.database;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,8 @@ public class DataBase {
     private String adminPasswod="123";
     private static DataBase database=null;
     public static ArrayList<Provider> providers;
+    public static Map<String, Account> cust_accounts = new HashMap<String, Account>();
+
     private DataBase()
     {
 //		this.adminPasswod="123";
