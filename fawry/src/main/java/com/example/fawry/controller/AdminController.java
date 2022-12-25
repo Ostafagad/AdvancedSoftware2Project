@@ -18,10 +18,13 @@ import com.example.fawry.service.AdminServices;
 @RestController
 @RequestMapping("/AdminController")
 public class AdminController {
+	
 	@Autowired
 	AdminServices adminService=new AdminServices();
-	ProviderCreator p=new VodafoneCreator();
-	Provider v=p.creatProvider();
+	
+	ProviderCreator pCreator=new VodafoneCreator();
+	
+	Provider vodafone=pCreator.creatProvider();
 	@GetMapping ("/signIn/{name}")
 	public Response<String> signIn(@PathVariable ("name") String name){
 		Response<String> response=new Response();
@@ -40,8 +43,8 @@ public class AdminController {
 	}
 	
 	 @PostMapping("/add")
-	    public Response addProvider(@RequestBody ProviderCreator p) {
-		 	p=new VodafoneCreator();
+	    public Response addProvider(@RequestBody Vodafone p) {
+		 	p=(Vodafone) this.vodafone;
 	        System.out.println("in add provider" + p);
 	        boolean res = adminService.addProvider(p);
 	        Response response = new Response();

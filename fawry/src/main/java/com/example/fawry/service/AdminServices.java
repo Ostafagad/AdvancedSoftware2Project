@@ -7,22 +7,32 @@ import com.example.fawry.database.DataBase;
 import com.example.fawry.model.*;
 @Service
 public class AdminServices {
+	private boolean res;
 	public String signIn(String name) {
 		 if(name==DataBase.getdb1().getAdminName())
 			 return DataBase.getdb1().getAdminName();
 		 else
 			 return "Wrong password";			 
 	 }
-public boolean addProvider(ProviderCreator provider) {
-	boolean res = false;
+public boolean addProvider(Provider provider) {
+	
 		for(Provider p:DataBase.providers) {
-			if(provider.creatProvider().getName()==p.getName())
-				res=false;
-			else
-				res=true;
+			if(DataBase.providers.isEmpty()) {
+				DataBase.providers.add(provider);
+				this.res=true;
+			}
+				
+			else if(provider.getName()==p.getName()) {
+				this.res=false;
+			}
+				
+			else {
+				DataBase.providers.add(provider);
+				this.res=true;
+			}
+				
 		}
 		
-		return res;
-		
+		return this.res;	
 	}
 }

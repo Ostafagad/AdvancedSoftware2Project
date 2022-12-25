@@ -1,11 +1,15 @@
 package com.example.fawry.database;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Component;
+
 import com.example.fawry.model.*;
 /**
 *
 * @author 
 */
+@Component
+
 public class DataBase {
 	private String adminUserName="aaaa";
     private String adminPasswod="123";

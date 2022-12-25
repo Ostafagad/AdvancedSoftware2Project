@@ -2,13 +2,15 @@ package com.example.fawry.model;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Component;
+@Component
 public class Vodafone extends Provider {
 	private static Vodafone v=null;
 
 	
 	private Vodafone() {
 		
-		this.name="Vodafone";
+		
 //		this.fields.add("phone number");
 //		this.fields.add("City");
 		
