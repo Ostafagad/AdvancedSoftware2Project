@@ -4,15 +4,25 @@ import com.example.fawry.model.Account;
 import com.example.fawry.model.Response;
 
 import java.util.Map;
+import com.example.fawry.model.AskforRefund;
+import com.example.fawry.model.BaseCommand;
+import com.example.fawry.model.Customer;
+import com.example.fawry.model.Payment;
+import com.example.fawry.model.Transaction;
+import com.example.fawry.model.Wallet;
 
 import org.springframework.stereotype.Service;
 
 import com.example.fawry.database.DataBase;
 @Service
 public class CustomerServices {
+	Customer customer=new Customer();
+	private BaseCommand bc;
+	Payment payment=new Wallet();
+	double cost;
     public Boolean SignUP(Account a) {
         try {
-        	//String s=a.getUser_name()+a.getEmail();
+        	
             if (DataBase.getdb1().cust_accounts.get(a.getEmail()) != null) {
                 return false;
             }
@@ -41,5 +51,30 @@ public class CustomerServices {
             System.out.println("Exception in getCustomer as" + e.getMessage());
         }
         return null;
+    
+//    public void chooseCommand(BaseCommand bc) {
+// 	   this.bc=bc;
+//    }
+    public void pay(Payment payment,double cost) {
+    	//this.cost=cost;
+    	this.customer.setPayment(payment);
+    	this.customer.setCost(cost);
+    	
+    	payment.pay(cost);
+    	this.customer.setT(new Transaction(Customer.custid,cost));
+    	DataBase.customerTransactions.add(this.customer.getT());
+    	
     }
+    
+   public void refundRequest(int id) {
+	   this.bc=new AskforRefund();
+	   for(Transaction t: DataBase.getdb().customerTransactions)
+ 	   {  
+ 		   if(id==Transaction.transid) {
+ 			  this.bc.execute(t);
+ 			  break;
+ 		   }
+ 	   }
+	   
+   }
 }

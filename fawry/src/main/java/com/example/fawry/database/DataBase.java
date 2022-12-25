@@ -1,7 +1,9 @@
 package com.example.fawry.database;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 
 import org.springframework.stereotype.Component;
 
@@ -18,12 +20,16 @@ public class DataBase {
     private static DataBase database=null;
     public static ArrayList<Provider> providers;
     public static Map<String, Account> cust_accounts = new HashMap<String, Account>();
-
+    public static Queue<Transaction>refunds;
+    public static ArrayList<Transaction>customerTransactions;
+    public static ArrayList <Service> services; 
     private DataBase()
     {
 //		this.adminPasswod="123";
 //		this.adminUserName="aaaa";
     	providers=new ArrayList<Provider>();
+    	refunds= new  LinkedList<Transaction>();
+    	services=new ArrayList<Service>();
     }
     public static DataBase getdb()
     {

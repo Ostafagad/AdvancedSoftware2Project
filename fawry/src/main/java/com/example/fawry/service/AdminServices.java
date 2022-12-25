@@ -32,7 +32,25 @@ public boolean addProvider(Provider provider) {
 			}
 				
 		}
-		
 		return this.res;	
 	}
+	
+ public boolean addService(com.example.fawry.model.Service service) {
+	boolean res=false;
+	for(com.example.fawry.model.Service ser:DataBase.getdb().services) {
+		if(DataBase.getdb().services.isEmpty()) {
+			DataBase.getdb().services.add((com.example.fawry.model.Service) service);			
+			res= true;
+		}
+		if(ser==service)
+			res= false;
+		else
+		{
+			DataBase.getdb().services.add((com.example.fawry.model.Service) service);			
+			res= true;
+		}
+	}
+	
+	return res;
+}
 }

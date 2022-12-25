@@ -20,7 +20,7 @@ public class CustomerController {
 	
 	 @PostMapping("/signup")
 	    public Response signup(@RequestBody Account a) {
-	        System.out.println("in add customer " + a);
+	        System.out.println("in add customer" + a);
 	        boolean res = cust_ser.SignUP(a);
 	        Response response = new Response();
 	        if (!res) {
@@ -33,7 +33,8 @@ public class CustomerController {
 	        response.setMessage("Account created successfully");
 	        return response;
 	    }
-	 @GetMapping("/signin/{pass}/{email}")
+
+		@GetMapping("/signin/{pass}/{email}")
 	    public Response<Account> signin(@PathVariable("pass") String pass,@PathVariable("email") String email) {
 	        var customer = cust_ser.SignIn(email,pass);
 	        Response<Account> response = new Response<Account>();
