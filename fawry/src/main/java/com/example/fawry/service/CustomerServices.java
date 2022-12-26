@@ -5,6 +5,7 @@ import com.example.fawry.model.AskforRefund;
 import com.example.fawry.model.BaseCommand;
 import com.example.fawry.model.Customer;
 import com.example.fawry.model.Payment;
+import com.example.fawry.model.Services;
 import com.example.fawry.model.Transaction;
 import com.example.fawry.model.Wallet;
 
@@ -53,16 +54,20 @@ public class CustomerServices {
 //    public void chooseCommand(BaseCommand bc) {
 // 	   this.bc=bc;
 //    }
-    public void pay(Payment payment,double cost) {
-    	//this.cost=cost;
-    	payment=this.payment;
-    	this.customer.setPayment(payment);
-    	this.customer.setCost(cost);
+    public boolean pay(Payment payment,double cost,String serviceName) {
+    	Services service= DataBase.getdb1().services.get(serviceName);;
+    	try {	 
+    		if(service==null)
+    			return false;
+    	}catch (Exception e) {
+            System.out.println("Exception in pay as" + e.getMessage());
+        }
     	
     	payment.pay(cost);
+    	service.setCost(cost);
     	this.customer.setT(new Transaction(Customer.custid,cost));
     	DataBase.customerTransactions.add(this.customer.getT());
-    	
+    	return true;
     }
     
    public void refundRequest(int id) {
