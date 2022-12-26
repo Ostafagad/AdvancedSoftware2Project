@@ -8,6 +8,7 @@ import com.example.fawry.model.*;
 @Service
 public class AdminServices {
 	private boolean res;
+	private double discount;
 	public String signIn(String name) {
 		 if(name==DataBase.getdb1().getAdminName())
 			 return DataBase.getdb1().getAdminName();
@@ -53,4 +54,16 @@ public boolean addProvider(Provider provider) {
 	
 	return res;
 }
+ public void setoveralldiscount(double d)
+	{
+		this.discount=d;
+	}
+	public void setspecificdiscount(double d)
+	{
+		this.discount=d;
+	}
+	public double getdicount()
+	{
+		return this.discount;
+	}
 }

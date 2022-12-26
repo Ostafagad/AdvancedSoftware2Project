@@ -75,4 +75,28 @@ public class AdminController {
 	        response.setMessage("Service added successfully");
 	        return response;
 	    }
+	 @PostMapping("/setoveralldiscount")
+	 public Response setoveralldiscount(@RequestBody double d)
+		{
+		 Response response = new Response();
+		 adminService.setoveralldiscount(d);
+		 response.setStatus(true);
+		 response.setMessage("overall discount added successfully");
+		 return response;
+		}
+	 @PostMapping("/setspecificdiscount")
+		public Response setspecificdiscount(@RequestBody double d)
+		{
+		 Response response = new Response();
+		 response.setStatus(true);
+		 response.setMessage("specific discount added successfully");
+		 return response;
+		}
+	 @GetMapping ("/discount")
+		public Response getdicount()
+		{
+		 Response response = new Response();
+		response.object= adminService.getdicount();
+		 return response;
+		}
 }
