@@ -1,9 +1,6 @@
 package com.example.fawry.service;
 
 import com.example.fawry.model.Account;
-import com.example.fawry.model.Response;
-
-import java.util.Map;
 import com.example.fawry.model.AskforRefund;
 import com.example.fawry.model.BaseCommand;
 import com.example.fawry.model.Customer;
@@ -19,7 +16,6 @@ public class CustomerServices {
 	Customer customer=new Customer();
 	private BaseCommand bc;
 	Payment payment=new Wallet();
-	double cost;
     public Boolean SignUP(Account a) {
         try {
         	
@@ -33,30 +29,14 @@ public class CustomerServices {
         }
         return true;
     }
-    public Account SignIn(String em,String pass) {
-        try {
-//        	Account a=DataBase.getdb1().cust_accounts.get(em);
-//        	if(a.getPassword()==pass)
-    			return DataBase.getdb1().cust_accounts.get(em);
-
-        		
-//        	for (Map.Entry<String, Account> entry : DataBase.getdb1().cust_accounts.entrySet()) {
-//        		if(entry.getKey()==em)
-//        		{
-//        			return DataBase.getdb1().cust_accounts.get(em);
-//        		}
-//        	}
-           
-        } catch (Exception e) {
-            System.out.println("Exception in getCustomer as" + e.getMessage());
-        }
-        return null;
+    
     
 //    public void chooseCommand(BaseCommand bc) {
 // 	   this.bc=bc;
 //    }
     public void pay(Payment payment,double cost) {
     	//this.cost=cost;
+    	payment=this.payment;
     	this.customer.setPayment(payment);
     	this.customer.setCost(cost);
     	
@@ -68,7 +48,7 @@ public class CustomerServices {
     
    public void refundRequest(int id) {
 	   this.bc=new AskforRefund();
-	   for(Transaction t: DataBase.getdb().customerTransactions)
+	   for(Transaction t: DataBase.getdb1().customerTransactions)
  	   {  
  		   if(id==Transaction.transid) {
  			  this.bc.execute(t);

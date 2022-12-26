@@ -22,9 +22,7 @@ import com.example.fawry.service.AdminServices;
 public class AdminController {
 	
 	@Autowired
-	AdminServices adminService=new AdminServices();
-	ProviderCreator pCreator=new VodafoneCreator();
-	Provider vodafone=pCreator.creatProvider();
+	AdminServices adminService=new AdminServices();	
 	Service service=new mobileRechargeService();
 	@GetMapping ("/signIn/{name}")
 	public Response<String> signIn(@PathVariable ("name") String name){
@@ -44,10 +42,10 @@ public class AdminController {
 	}
 	
 	 @PostMapping("/addProvider")
-	    public Response addProvider(@RequestBody Vodafone p) {
-		 	p=(Vodafone) this.vodafone;
-	        System.out.println("in add provider" + p);
-	        boolean res = adminService.addProvider(p);
+	    public Response addProvider(@RequestBody String name,@RequestBody double amount ) {
+		 	
+	        System.out.println("in add provider");
+	        boolean res = adminService.addProvider(name,amount);
 	        Response response = new Response();
 	        if (!res) {
 	            response.setStatus(false);
@@ -59,20 +57,20 @@ public class AdminController {
 	        response.setMessage("Provider created successfully");
 	        return response;
 	    }
-	 @PostMapping("/addService")
-	    public Response addService(@RequestBody mobileRechargeService service) {
-		   service=(mobileRechargeService) this.service;
-	        System.out.println("in add service" + service);
-	        boolean res = adminService.addService(service);
-	        Response response = new Response();
-	        if (!res) {
-	            response.setStatus(false);
-	            response.setMessage("Service Already Exists");
-	            return response;
-	        }
-
-	        response.setStatus(true);
-	        response.setMessage("Service added successfully");
-	        return response;
-	    }
+//	 @PostMapping("/addService")
+//	    public Response addService(@RequestBody mobileRechargeService service) {
+//		   service=(mobileRechargeService) this.service;
+//	        System.out.println("in add service" + service);
+//	        boolean res = adminService.addService(service);
+//	        Response response = new Response();
+//	        if (!res) {
+//	            response.setStatus(false);
+//	            response.setMessage("Service Already Exists");
+//	            return response;
+//	        }
+//
+//	        response.setStatus(true);
+//	        response.setMessage("Service added successfully");
+//	        return response;
+//	    }
 }

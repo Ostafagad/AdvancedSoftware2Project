@@ -2,23 +2,27 @@ package com.example.fawry.model;
 
 import java.util.ArrayList;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 @Component
 public class Vodafone extends Provider {
 	private static Vodafone v=null;
-
 	
-	private Vodafone() {
-		
+	
+	private Vodafone(String name,double amount) {
+		this.name=name;
+		this.amount=amount;
 		
 //		this.fields.add("phone number");
 //		this.fields.add("City");
 		
 	}
-	public static Vodafone getvodafone()
+	
+	public static Vodafone getvodafone(String name,double amount)
 	{
 		if(v==null)
-			v=new Vodafone();
+			v=new Vodafone( name, amount);
 		return v;
 	}
 	
@@ -27,8 +31,6 @@ public class Vodafone extends Provider {
 //		this.inputfields=inputfields;
 		this.amount=amount;
 	}
-	
-
 	
 
 }

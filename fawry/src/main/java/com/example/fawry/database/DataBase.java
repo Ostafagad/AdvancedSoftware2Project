@@ -18,7 +18,7 @@ public class DataBase {
 	private String adminUserName="aaaa";
     private String adminPasswod="123";
     private static DataBase database=null;
-    public static ArrayList<Provider> providers;
+    public static Map<String, Provider> providers = new HashMap<String, Provider>();
     public static Map<String, Account> cust_accounts = new HashMap<String, Account>();
     public static Queue<Transaction>refunds;
     public static ArrayList<Transaction>customerTransactions;
@@ -27,16 +27,11 @@ public class DataBase {
     {
 //		this.adminPasswod="123";
 //		this.adminUserName="aaaa";
-    	providers=new ArrayList<Provider>();
+    	
     	refunds= new  LinkedList<Transaction>();
     	services=new ArrayList<Service>();
     }
-    public static DataBase getdb()
-    {
-    	if(database==null)
-    		database=new DataBase();
-    	return database;
-    }
+   
     
     public void setAdminUserName(String name) {
 		this.adminUserName=name;

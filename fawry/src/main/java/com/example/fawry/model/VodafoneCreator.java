@@ -4,8 +4,8 @@ public class VodafoneCreator extends ProviderCreator {
 
 	@Override
 	
-	public Provider creatProvider() {
-		return Vodafone.getvodafone();
+	public Provider creatProvider(String name,double amount) {
+		return Vodafone.getvodafone( name, amount);
 	}
 
 }
