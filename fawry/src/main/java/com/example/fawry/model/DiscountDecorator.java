@@ -2,7 +2,7 @@ package com.example.fawry.model;
 
 
 
-public abstract class DiscountDecorator extends Service {
+public abstract class DiscountDecorator extends Services {
 	
 	
 	

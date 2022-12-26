@@ -19,10 +19,10 @@ public class CustomerServices {
     public Boolean SignUP(Account a) {
         try {
         	
-            if (DataBase.getdb1().cust_accounts.get(a.getEmail()) != null) {
+            if (DataBase.getdb1().cust_accounts.get(a.getEmail().toLowerCase()) != null) {
                 return false;
             }
-            DataBase.getdb1().cust_accounts.put(a.getEmail(), a);
+            DataBase.getdb1().cust_accounts.put(a.getEmail().toLowerCase(), a);
         } catch (Exception e) {
             System.out.println("Exception in account as" + e.getMessage());
             return false;

@@ -19,17 +19,18 @@ public class DataBase {
     private String adminPasswod="123";
     private static DataBase database=null;
     public static Map<String, Provider> providers = new HashMap<String, Provider>();
+    
     public static Map<String, Account> cust_accounts = new HashMap<String, Account>();
     public static Queue<Transaction>refunds;
     public static ArrayList<Transaction>customerTransactions;
-    public static ArrayList <Service> services; 
+    public static Map<String, Services> services = new HashMap<String, Services>();
     private DataBase()
     {
 //		this.adminPasswod="123";
 //		this.adminUserName="aaaa";
     	
     	refunds= new  LinkedList<Transaction>();
-    	services=new ArrayList<Service>();
+    	
     }
    
     

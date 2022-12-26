@@ -1,13 +1,14 @@
 package com.example.fawry.model;
 
-public class mobileRechargeService extends Service {
-	
-	public mobileRechargeService () {
-		this.description="Mobile Recharge Service";
-		this.discount=0;
+public class mobileRechargeService extends Services {
+	public mobileRechargeService () {}
+	public mobileRechargeService (String description,double cost) {
+		
+		this.description=description;
+		this.cost=cost;
 		
 	}
-	
+	@Override
 	public double cost() {
 		
 		return this.cost;
@@ -18,15 +19,19 @@ public class mobileRechargeService extends Service {
 		this.cost=cost;
 		
 	}
-    
-	public String getsername() {
-		return "Mobile Recharge Service";
+	public void setsername(String description) {
+	 this.description=description;
 	}
-
+	@Override
+	public String getsername() {
+		return this.description;
+	}
+	
+/*
 	@Override
 	public void getDiscountValue() {
 		
-		Service.finalDiscount+=0;
+		Services.finalDiscount+=0;
 	}
-	
+	*/
 }

@@ -11,7 +11,7 @@ import com.example.fawry.database.DataBase;
 import com.example.fawry.model.Provider;
 import com.example.fawry.model.ProviderCreator;
 import com.example.fawry.model.Response;
-import com.example.fawry.model.Service;
+import com.example.fawry.model.Services;
 import com.example.fawry.model.Vodafone;
 import com.example.fawry.model.VodafoneCreator;
 import com.example.fawry.model.mobileRechargeService;
@@ -23,7 +23,6 @@ public class AdminController {
   
   @Autowired
   AdminServices adminService=new AdminServices();  
-  Service service=new mobileRechargeService();
   @GetMapping ("/signIn/{name}")
   public Response<String> signIn(@PathVariable ("name") String name){
     Response<String> response=new Response();
@@ -57,20 +56,20 @@ public class AdminController {
           response.setMessage("Provider created successfully");
           return response;
       }
-//   @PostMapping("/addService")
-//      public Response addService(@RequestBody mobileRechargeService service) {
-//       service=(mobileRechargeService) this.service;
-//          System.out.println("in add service" + service);
-//          boolean res = adminService.addService(service);
-//          Response response = new Response();
-//          if (!res) {
-//              response.setStatus(false);
-//              response.setMessage("Service Already Exists");
-//              return response;
-//          }
-//
-//          response.setStatus(true);
-//          response.setMessage("Service added successfully");
-//          return response;
-//      }
+  @PostMapping("/addService")
+     public Response addService(@RequestBody mobileRechargeService service) {
+   
+          System.out.println("in add service" + service);
+          boolean res = adminService.addService(service);
+         Response response = new Response();
+         if (!res) {
+              response.setStatus(false);
+              response.setMessage("Service Already Exists");
+              return response;
+          }
+
+          response.setStatus(true);
+          response.setMessage("Service added successfully");
+          return response;
+      }
 }

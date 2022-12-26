@@ -3,16 +3,19 @@ package com.example.fawry.model;
 
 
 public class OverAllDiscount extends DiscountDecorator {
-	Service service;
-	public OverAllDiscount(Service service,double d){
+	Services service;
+	public OverAllDiscount(Services service,double d){
 		this.service= service;
-		Service.discount+=d;
+		//Services.discount+=d;
 	}
 	
+	@Override
 	public double cost() {
 		
-		return service.cost -(service.cost*discount);
+		//return service.cost -(service.cost*discount);
+		return service.cost;
 	}
+	
 
 	@Override
 	public void setCost(double cost) {
@@ -25,14 +28,14 @@ public class OverAllDiscount extends DiscountDecorator {
 		
 		return service.getsername();
 	}
-
+/*
 	@Override
 	public void getDiscountValue() {
 		
-		Service.finalDiscount+=Service.discount*service.cost;
+		Services.finalDiscount+=Services.discount*service.cost;
 		
 	}
-
+*/
 	
 
 	

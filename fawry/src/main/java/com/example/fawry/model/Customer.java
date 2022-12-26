@@ -8,7 +8,7 @@ public class Customer {
     private Account acount;
     private Payment payment;
     //private ProviderCreator pc;
-    private Service ser;
+    private Services ser;
     private double cost;
     private ArrayList<Transaction>transactions;
     public static int custid=0;
@@ -48,13 +48,13 @@ public void setPayment(Payment payment) {
 
 
 
-public Service getSer() {
+public Services getSer() {
 	return ser;
 }
 
 
 
-public void setSer(Service ser) {
+public void setSer(Services ser) {
 	this.ser = ser;
 }
 
