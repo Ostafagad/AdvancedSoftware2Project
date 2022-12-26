@@ -16,6 +16,7 @@ public abstract class Provider {
 		//form=new Form(inputfields,amount);
 		//inputfields=new ArrayList<String>();
 	}
+	
 	public void setName(String name) {
 		this.name=name;
 	}
