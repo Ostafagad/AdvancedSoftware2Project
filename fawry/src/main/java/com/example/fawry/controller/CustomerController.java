@@ -1,6 +1,8 @@
 package com.example.fawry.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +33,26 @@ public class CustomerController {
 	        response.setMessage("Account created successfully");
 	        return response;
 	    }
+	 @GetMapping("/signin/{pass}/{email}")
+	    public Response<Account> signin(@PathVariable("pass") String pass,@PathVariable("email") String email) {
+	        var customer = cust_ser.SignIn(email,pass);
+	        Response<Account> response = new Response<Account>();
+	        if (customer == null ) {
+	        	response.setStatus(false);
+	            response.setMessage("Account Not Found");
+	            response.object = null;
+
+		        return response;
+	        }
+	        response.setStatus(true);
+	        response.setMessage("Sign in Successfully");
+	        response.object = customer;
+
+         return response;
+
+	        
+	    }
+	 
 	
 
 }

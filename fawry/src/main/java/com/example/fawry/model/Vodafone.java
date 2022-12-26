@@ -8,7 +8,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class Vodafone extends Provider {
 	private static Vodafone v=null;
-	
+	private Vodafone() {
+		
+		
+//		this.fields.add("phone number");
+//		this.fields.add("City");
+		
+	}
 	
 	private Vodafone(String name,double amount) {
 		this.name=name;
