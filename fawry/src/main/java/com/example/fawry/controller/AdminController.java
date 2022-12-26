@@ -57,6 +57,46 @@ public class AdminController {
 	        response.setMessage("Provider created successfully");
 	        return response;
 	    }
+	 @PostMapping("/addService")
+	    public Response addService(@RequestBody mobileRechargeService service) {
+		   service=(mobileRechargeService) this.service;
+	        System.out.println("in add service" + service);
+	        boolean res = adminService.addService(service);
+	        Response response = new Response();
+	        if (!res) {
+	            response.setStatus(false);
+	            response.setMessage("Service Already Exists");
+	            return response;
+	        }
+
+	        response.setStatus(true);
+	        response.setMessage("Service added successfully");
+	        return response;
+	    }
+	 @PostMapping("/setoveralldiscount")
+	 public Response setoveralldiscount(@RequestBody double d)
+		{
+		 Response response = new Response();
+		 adminService.setoveralldiscount(d);
+		 response.setStatus(true);
+		 response.setMessage("overall discount added successfully");
+		 return response;
+		}
+	 @PostMapping("/setspecificdiscount")
+		public Response setspecificdiscount(@RequestBody double d)
+		{
+		 Response response = new Response();
+		 response.setStatus(true);
+		 response.setMessage("specific discount added successfully");
+		 return response;
+		}
+	 @GetMapping ("/discount")
+		public Response getdicount()
+		{
+		 Response response = new Response();
+		response.object= adminService.getdicount();
+		 return response;
+		}
 //	 @PostMapping("/addService")
 //	    public Response addService(@RequestBody mobileRechargeService service) {
 //		   service=(mobileRechargeService) this.service;

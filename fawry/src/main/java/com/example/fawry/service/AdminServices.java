@@ -8,7 +8,7 @@ import com.example.fawry.model.*;
 @Service
 public class AdminServices {
 	private boolean res;
-	ProviderCreator pc=new VodafoneCreator();
+	private double discount;
 	public String signIn(String name) {
 		 if(name==DataBase.getdb1().getAdminName())
 			 return DataBase.getdb1().getAdminName();
@@ -50,6 +50,39 @@ public class AdminServices {
 		return true;
 		
 	}
+ 
+	
+ public boolean addService(com.example.fawry.model.Service service) {
+	boolean res=false;
+	for(com.example.fawry.model.Service ser:DataBase.getdb().services) {
+		if(DataBase.getdb().services.isEmpty()) {
+			DataBase.getdb().services.add((com.example.fawry.model.Service) service);			
+			res= true;
+		}
+		if(ser==service)
+			res= false;
+		else
+		{
+			DataBase.getdb().services.add((com.example.fawry.model.Service) service);			
+			res= true;
+		}
+	}
+	
+	return res;
+}
+ public void setoveralldiscount(double d)
+	{
+		this.discount=d;
+	}
+	public void setspecificdiscount(double d)
+	{
+		this.discount=d;
+	}
+	public double getdicount()
+	{
+		return this.discount;
+	}
+
 }
 	
 // public boolean addService(com.example.fawry.model.Service service) {
