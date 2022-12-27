@@ -19,10 +19,29 @@ public class CustomerController {
 	@Autowired
 	CustomerServices cust_ser=new CustomerServices();
 	
-	@PostMapping("/pay/{cost}/{service}")
-    public Response pay(@RequestBody Wallet wallet,@RequestBody double cost,@RequestBody String service) {
+//	@PostMapping("/pay")
+//    public Response pay(@RequestBody Wallet wallet,@RequestBody double cost,@RequestBody String service) {
+//		System.out.println("in pay" + wallet);
+//		boolean res=cust_ser.pay(wallet, cost,service);
+//		Response response = new Response();
+//		if (!res) {
+//            response.setStatus(false);
+//            response.setMessage("Write service name in acorrect way");
+//            response.object=null;
+//            return response;
+//        }
+//
+//        response.setStatus(true);
+//        response.setMessage("payment process is successful");
+//        response.object=wallet;
+//        return response;
+//	}
+	
+	
+	@PostMapping("/pay")
+    public Response pay(@RequestBody Wallet wallet) {
 		System.out.println("in pay" + wallet);
-		boolean res=cust_ser.pay(wallet, cost,service);
+		boolean res=cust_ser.pay(wallet);
 		Response response = new Response();
 		if (!res) {
             response.setStatus(false);

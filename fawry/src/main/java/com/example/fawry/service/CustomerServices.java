@@ -54,18 +54,35 @@ public class CustomerServices {
 //    public void chooseCommand(BaseCommand bc) {
 // 	   this.bc=bc;
 //    }
-    public boolean pay(Payment payment,double cost,String serviceName) {
-    	Services service= DataBase.getdb1().services.get(serviceName);;
+//    public boolean pay(Payment payment,double cost,String serviceName) {
+//    	Services service= DataBase.getdb1().services.get(serviceName);
+//    	try {	 
+//    		if(service==null)
+//    			return false;
+//    	}catch (Exception e) {
+//            System.out.println("Exception in pay as" + e.getMessage());
+//        }
+//    	
+//    	payment.pay(cost);
+//    	service.setCost(cost);
+//    	this.customer.setT(new Transaction(Customer.custid,cost));
+//    	DataBase.customerTransactions.add(this.customer.getT());
+//    	return true;
+//    }
+    
+    
+    public boolean pay(Wallet payment) {
+    	//Services service= DataBase.getdb1().services.get(payment.getServiceName());
     	try {	 
-    		if(service==null)
+    		if(DataBase.getdb1().services.get(payment.getServiceName())==null)
     			return false;
     	}catch (Exception e) {
             System.out.println("Exception in pay as" + e.getMessage());
         }
     	
-    	payment.pay(cost);
-    	service.setCost(cost);
-    	this.customer.setT(new Transaction(Customer.custid,cost));
+    	payment.pay(payment.getCost());
+    	DataBase.getdb1().services.get(payment.getServiceName()).setCost(payment.getCost());
+    	this.customer.setT(new Transaction(Customer.custid,payment.getCost()));
     	DataBase.customerTransactions.add(this.customer.getT());
     	return true;
     }
