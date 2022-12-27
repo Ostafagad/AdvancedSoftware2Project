@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.fawry.model.Account;
 import com.example.fawry.model.Response;
 import com.example.fawry.model.Wallet;
+import com.example.fawry.model.mobileRechargeService;
 import com.example.fawry.service.CustomerServices;
 
 @RestController
@@ -91,7 +92,25 @@ public class CustomerController {
 
 	        
 	    }
-	 
+	 @GetMapping("/searchservice/{description}")
+     public Response<mobileRechargeService> searchService(@PathVariable("description") String description) {
+         var service = cust_ser.SearchServices(description);
+         Response<mobileRechargeService> response = new Response<mobileRechargeService>();
+         if (service == null ) {
+           response.setStatus(false);
+             response.setMessage("Service Not Found");
+             response.object = null;
+
+           return response;
+         }
+         response.setStatus(true);
+         response.setMessage("Search Service Successfully");
+         response.object =  (mobileRechargeService) service;
+
+       return response;
+
+         
+     }
 	
 
 }
