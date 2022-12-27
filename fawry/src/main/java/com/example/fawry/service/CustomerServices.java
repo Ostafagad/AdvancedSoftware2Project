@@ -69,7 +69,14 @@ public class CustomerServices {
         try {
 //          Account a=DataBase.getdb1().cust_accounts.get(em);
 //          if(a.getPassword()==pass)
-          return DataBase.getdb1().services.get(description);
+        	for (Map.Entry<String, Services> entry :  DataBase.getdb1().services.entrySet()) {
+        		if(DataBase.getdb1().services.isEmpty())
+        			return null;
+        		else if(Objects.equals(entry.getKey().toLowerCase(), description.toLowerCase())  )
+        			return entry.getValue();	        	
+        	}
+        	////
+  
 
             
 //          for (Map.Entry<String, Account> entry : DataBase.getdb1().cust_accounts.entrySet()) {
@@ -107,16 +114,27 @@ public class CustomerServices {
     
     public boolean pay(Wallet payment) {
     	//Services service= DataBase.getdb1().services.get(payment.getServiceName());
-    	try {	 
-    		if(DataBase.getdb1().services.get(payment.getServiceName())==null)
+    	try {	
+    		for (Map.Entry<String, Services> entry : DataBase.getdb1().services.entrySet()) {
+        		 if(Objects.equals(entry.getKey(), payment.getServiceName()))
+        		 {
+        		    payment.pay(payment.getCost());
+        			 entry.getValue().setCost(payment.getCost());
+        			 return true;
+        		 }
+        			
+        		        	
+        	}
+    		////////
+    	//	if(DataBase.getdb1().services.get(payment.getServiceName())==null)
     			return false;
     	}catch (Exception e) {
             System.out.println("Exception in pay as" + e.getMessage());
         }
     	
-    	payment.pay(payment.getCost());
-    	DataBase.getdb1().services.get(payment.getServiceName()).setCost(payment.getCost());
-    	this.customer.setT(new Transaction(Customer.custid,payment.getCost()));
+//    	payment.pay(payment.getCost());
+//    	DataBase.getdb1().services.get(payment.getServiceName()).setCost(payment.getCost());
+//    	this.customer.setT(new Transaction(Customer.custid,payment.getCost()));
     	//DataBase.getdb1().customerTransactions.add(this.customer.getT());
     	return true;
     }
