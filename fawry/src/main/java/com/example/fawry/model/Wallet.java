@@ -1,7 +1,7 @@
 package com.example.fawry.model;
 
 public class Wallet implements Payment {
-	private double balance=10000;
+	private double balance;
 	public double cost;
 	public String serviceName;
 	@Override

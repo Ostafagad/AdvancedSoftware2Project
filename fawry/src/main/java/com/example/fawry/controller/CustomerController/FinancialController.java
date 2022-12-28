@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.fawry.database.DataBase;
+import com.example.fawry.model.Cashe;
+import com.example.fawry.model.CreditCard;
 import com.example.fawry.model.Response;
 import com.example.fawry.model.Services;
 import com.example.fawry.model.Wallet;
@@ -20,10 +22,10 @@ import com.example.fawry.service.CustomerService.SearchService;
 public class FinancialController {
 	@Autowired
 	FinancialService financialservice=new FinancialService();
-	@PostMapping("/pay")
-    public Response pay(@RequestBody Wallet wallet) {
+	@PostMapping("/paywallet")
+    public Response PayWithWallet(@RequestBody Wallet wallet) {
 		System.out.println("in pay" + wallet);
-		boolean res=financialservice.pay(wallet);
+		boolean res=financialservice.PayWithWallet(wallet);
 		Response response = new Response();
 		if (!res) {
             response.setStatus(false);
@@ -33,9 +35,77 @@ public class FinancialController {
         }
 
         response.setStatus(true);
-        response.setMessage("payment process is successful");
+        response.setMessage("payment process with Wallet is successful");
         response.object=wallet;
         return response;
 	}
 	
+	@PostMapping("/paycreditcard")
+    public Response paywithcreditcard(@RequestBody CreditCard creditcard) {
+		System.out.println("in pay with " + creditcard);
+		boolean res=financialservice.PayWithCreditCard(creditcard);
+		Response response = new Response();
+		if (!res) {
+            response.setStatus(false);
+            response.setMessage("Write service name in acorrect way");
+            response.object=null;
+            return response;
+        }
+
+        response.setStatus(true);
+        response.setMessage("payment process with CreditCard is successful");
+        response.object=creditcard;
+        return response;
+	}
+	@PostMapping("/paycashe")
+    public Response paywithcreditcard(@RequestBody Cashe cashe) {
+		System.out.println("in pay with " + cashe);
+		boolean res=financialservice.PayWithCashe(cashe);
+		Response response = new Response();
+		if (!res) {
+            response.setStatus(false);
+            response.setMessage("Write service name in acorrect way");
+            response.object=null;
+            return response;
+        }
+
+        response.setStatus(true);
+        response.setMessage("payment process with Cashe is successful");
+        response.object=cashe;
+        return response;
+	}
+	@PostMapping("/addfundstowallet")
+    public Response addfundstowallet(@RequestBody Wallet wallet) {
+		System.out.println("in pay with " + wallet);
+		boolean res=financialservice.AddFundsToWallet(wallet);
+		Response response = new Response();
+		if (!res) {
+            response.setStatus(false);
+            response.setMessage("Write Wallet details in acorrect way");
+            response.object=null;
+            return response;
+        }
+
+        response.setStatus(true);
+        response.setMessage("payment process with Wallet is successful");
+        response.object=wallet;
+        return response;
+	}
+	@PostMapping("/addfundstocreditcard")
+    public Response addfundstocreditcard(@RequestBody CreditCard creditcard) {
+		System.out.println("in pay with " + creditcard);
+		boolean res=financialservice.AddFundsToCreditCard(creditcard);
+		Response response = new Response();
+		if (!res) {
+            response.setStatus(false);
+            response.setMessage("Write CreditCard details in acorrect way");
+            response.object=null;
+            return response;
+        }
+
+        response.setStatus(true);
+        response.setMessage("payment process with CreditCard is successful");
+        response.object=creditcard;
+        return response;
+	}
 }

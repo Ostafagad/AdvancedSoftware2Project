@@ -21,6 +21,7 @@ public class DataBase {
     public static Map<String, Provider> providers = new HashMap<String, Provider>();
     
     public static Map<String, Account> cust_accounts = new HashMap<String, Account>();
+    public static Map<String, Account> admin_account = new HashMap<String, Account>();
     public static Queue<Transaction>refunds;
     public static ArrayList<Transaction>customerTransactions;
     public static Map<String, Services> services = new HashMap<String, Services>();

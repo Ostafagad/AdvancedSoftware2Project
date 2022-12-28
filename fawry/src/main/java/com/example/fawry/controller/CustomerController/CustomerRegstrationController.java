@@ -24,17 +24,17 @@ public class CustomerRegstrationController {
 	CustomerRegsration customerregistration=new CustomerRegsration();
 	@PostMapping("/signup")
     public Response signup(@RequestBody Account a) {
-        System.out.println("in add customer" + a);
+        System.out.println("In Add Customer" + a);
         boolean res = customerregistration.SignUP(a);
         Response response = new Response();
         if (!res) {
             response.setStatus(false);
-            response.setMessage("UserName or Email Already Exists");
+            response.setMessage("Customer UserName or Email Already Exists");
             return response;
         }
 
         response.setStatus(true);
-        response.setMessage("Account created successfully");
+        response.setMessage("Customer Account created successfully");
         response.object=a;
         return response;
     }
@@ -44,13 +44,13 @@ public class CustomerRegstrationController {
         Response<Account> response = new Response<Account>();
         if (customer == null ) {
         	response.setStatus(false);
-            response.setMessage("Account Not Found");
+            response.setMessage("Customer Account Not Found");
             response.object = null;
 
 	        return response;
         }
         response.setStatus(true);
-        response.setMessage("Sign in Successfully");
+        response.setMessage("Customer Sign in Successfully");
         response.object = customer;
 
      return response;
