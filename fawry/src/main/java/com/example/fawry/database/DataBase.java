@@ -25,6 +25,7 @@ public class DataBase {
     public static Queue<Transaction>refunds;
     public static ArrayList<Transaction>customerTransactions;
     public static Map<String, Services> services = new HashMap<String, Services>();
+    public static Map<String, DiscountDecorator> discounts = new HashMap<String,  DiscountDecorator>();
     private DataBase()
     {
 //		this.adminPasswod="123";

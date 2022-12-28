@@ -1,42 +1,44 @@
 package com.example.fawry.model;
 
 
-
 public class OverAllDiscount extends DiscountDecorator {
-	Services service;
-	public OverAllDiscount(Services service,double d){
-		this.service= service;
-		//Services.discount+=d;
-	}
-	
-	@Override
-	public double cost() {
-		
-		//return service.cost -(service.cost*discount);
-		return service.cost;
-	}
-	
-
-	@Override
-	public void setCost(double cost) {
-		service.cost=cost;
-		
-	}
 
 	@Override
 	public String getsername() {
 		
-		return service.getsername();
+		return this.sername;
 	}
-/*
+
 	@Override
-	public void getDiscountValue() {
-		
-		Services.finalDiscount+=Services.discount*service.cost;
+	public double getDiscountValue() {
+	
+		return this.discount;
+	}
+
+	@Override
+	public void setdiscount(double discount) {
+		this.discount=discount;
 		
 	}
-*/
-	
+
+	@Override
+	public void setsername(String s) {
+		this.sername=s;
+		
+	}
+
+	@Override
+	public String getDiscountname() {
+		// TODO Auto-generated method stub
+		return this.discountname;
+	}
+
+	@Override
+	public void setdiscountname(String discountname) {
+		this.discountname=discountname;
+		
+	}
+
 
 	
 }
