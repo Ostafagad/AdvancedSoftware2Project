@@ -12,7 +12,7 @@ public class Customer {
     private double cost;
     private ArrayList<Transaction>transactions;
     public static int custid=0;
-    private BaseCommand bc;
+    
     private ProviderCreator pc;
     private String targetService;
     private Transaction t;
@@ -80,18 +80,6 @@ public static int getCustid() {
 
 public static void setCustid(int custid) {
 	Customer.custid = custid;
-}
-
-
-
-public BaseCommand getBc() {
-	return bc;
-}
-
-
-
-public void setBc(BaseCommand bc) {
-	this.bc = bc;
 }
 
 

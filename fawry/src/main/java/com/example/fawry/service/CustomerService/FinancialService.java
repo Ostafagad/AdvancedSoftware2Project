@@ -9,6 +9,7 @@ import com.example.fawry.database.DataBase;
 import com.example.fawry.model.Cashe;
 import com.example.fawry.model.CreditCard;
 import com.example.fawry.model.Services;
+import com.example.fawry.model.Transaction;
 import com.example.fawry.model.Wallet;
 
 @Service
@@ -21,6 +22,8 @@ public class FinancialService {
         		 {
         		    payment.pay(payment.getCost());
         			 entry.getValue().setCost(payment.getCost());
+        			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"Payment",false);
+        			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 return true;
         		 }
         			
@@ -47,6 +50,8 @@ public class FinancialService {
         		 {
         		    payment.pay(payment.getCost());
         			 entry.getValue().setCost(payment.getCost());
+        			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"Payment",false);
+        			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 return true;
         		 }
         			
@@ -73,27 +78,27 @@ public class FinancialService {
         		 {
         		    payment.pay(payment.getCost());
         			 entry.getValue().setCost(payment.getCost());
+        			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"Payment",false);
+        			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 return true;
         		 }
         			
         		        	
         	}
-    		////////
-    	//	if(DataBase.getdb1().services.get(payment.getServiceName())==null)
+    		
     			return false;
     	}catch (Exception e) {
             System.out.println("Exception in pay as" + e.getMessage());
         }
     	
-//    	payment.pay(payment.getCost());
-//    	DataBase.getdb1().services.get(payment.getServiceName()).setCost(payment.getCost());
-//    	this.customer.setT(new Transaction(Customer.custid,payment.getCost()));
-    	//DataBase.getdb1().customerTransactions.add(this.customer.getT());
+
     	return true;
     }
-	public boolean AddFundsToWallet(CreditCard w) {
+	public boolean AddFundsToWallet(CreditCard card) {
     	try {	
-        		     w.AddFundsToWallet(CreditCard.getFunds());
+        		     card.AddFundsToWallet(CreditCard.getFunds());
+        		     Transaction t=new Transaction("AddToWallet",CreditCard.getFunds(),"Wallet",false);
+        			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 return true;
     	}
     	catch (Exception e) {
@@ -104,7 +109,7 @@ public class FinancialService {
 	public boolean AddFundsToCreditCard(CreditCard creditcard) {
     	try {	
     		
-        			 creditcard.addfunds(CreditCard.getFunds());
+        			 creditcard.addfunds();
                      creditcard.getcardnum();
                      creditcard.getpass();
         			 return true;
@@ -114,4 +119,25 @@ public class FinancialService {
             return false;
         }
     }
+	
+	public boolean askForRefund(int transactionId) {
+		
+		try {	
+    		for (Map.Entry<Integer,Transaction> entry : DataBase.getdb1().customerTransactions.entrySet()) {
+        		 if(Objects.equals(entry.getKey(), transactionId))
+        		 {
+        		    
+        			 DataBase.refunds.put(entry.getKey(), entry.getValue());
+        			 return true;
+        		 }		
+        		        	
+        	}
+    		
+    			return false;
+    	}catch (Exception e) {
+            System.out.println("Exception in pay as" + e.getMessage());
+        }
+		return true;
+	}
+	
 }

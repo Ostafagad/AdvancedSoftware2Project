@@ -40,7 +40,7 @@ public class CreditCard implements Payment {
 		return password;
 	}
 	
-	public  void addfunds(double d) {
+	public  void addfunds() {
 		cardBalance+=funds;
 	}
 	public double getCardBalance() {
