@@ -6,12 +6,16 @@ import java.util.Objects;
 import org.springframework.stereotype.Service;
 
 import com.example.fawry.database.DataBase;
-import com.example.fawry.model.Cashe;
-import com.example.fawry.model.CreditCard;
-import com.example.fawry.model.DiscountDecorator;
-import com.example.fawry.model.Services;
-import com.example.fawry.model.Transaction;
-import com.example.fawry.model.Wallet;
+
+
+
+
+import com.example.fawry.model.DiscountModel.DiscountDecorator;
+import com.example.fawry.model.PaymentModel.Cashe;
+import com.example.fawry.model.PaymentModel.CreditCard;
+import com.example.fawry.model.PaymentModel.Wallet;
+import com.example.fawry.model.ServiceModel.Services;
+import com.example.fawry.model.TransactionModel.Transaction;
 
 @Service
 public class FinancialService {

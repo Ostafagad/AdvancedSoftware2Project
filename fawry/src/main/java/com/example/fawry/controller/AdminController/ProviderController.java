@@ -6,12 +6,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.fawry.model.Etisalat;
-import com.example.fawry.model.Orange;
 import com.example.fawry.model.Response;
-import com.example.fawry.model.Vodafone;
-import com.example.fawry.model.We;
-
+import com.example.fawry.model.ProvidersModel.Etisalat;
+import com.example.fawry.model.ProvidersModel.Orange;
+import com.example.fawry.model.ProvidersModel.Vodafone;
+import com.example.fawry.model.ProvidersModel.We;
 import com.example.fawry.service.AdminService.AddProvider;
 @RestController
 @RequestMapping("/ProviderController")

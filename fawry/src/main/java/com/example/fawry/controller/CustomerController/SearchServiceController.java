@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.fawry.model.Response;
-import com.example.fawry.model.Services;
-import com.example.fawry.model.mobileRechargeService;
-
+import com.example.fawry.model.ServiceModel.Services;
 import com.example.fawry.service.CustomerService.SearchService;
 
 @RestController

@@ -6,14 +6,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.fawry.model.Donations;
-import com.example.fawry.model.InternetPaymentServices;
-import com.example.fawry.model.LandlineServices;
-import com.example.fawry.model.MonthlyReceipt;
-import com.example.fawry.model.QuarterReceipt;
 import com.example.fawry.model.Response;
-import com.example.fawry.model.mobileRechargeService;
-
+import com.example.fawry.model.ServiceModel.Donations;
+import com.example.fawry.model.ServiceModel.InternetPaymentServices;
+import com.example.fawry.model.ServiceModel.LandlineServices;
+import com.example.fawry.model.ServiceModel.MonthlyReceipt;
+import com.example.fawry.model.ServiceModel.QuarterReceipt;
+import com.example.fawry.model.ServiceModel.mobileRechargeService;
 import com.example.fawry.service.AdminService.AddService;
 @RestController
 @RequestMapping("/ServiceController")

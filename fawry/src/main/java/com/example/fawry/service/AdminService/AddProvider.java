@@ -3,7 +3,8 @@ package com.example.fawry.service.AdminService;
 import org.springframework.stereotype.Service;
 
 import com.example.fawry.database.DataBase;
-import com.example.fawry.model.Provider;
+import com.example.fawry.model.ProvidersModel.Provider;
+
 @Service
 public class AddProvider {
 	public boolean addProvider(Provider p) {

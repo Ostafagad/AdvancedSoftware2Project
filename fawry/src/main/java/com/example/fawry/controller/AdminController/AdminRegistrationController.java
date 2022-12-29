@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.fawry.model.Account;
-import com.example.fawry.model.Response;
 
+import com.example.fawry.model.Response;
+import com.example.fawry.model.RegistrationModel.Account;
 import com.example.fawry.service.AdminService.AdminRegistration;
 @RestController
 @RequestMapping("/AdminRegistrationController")

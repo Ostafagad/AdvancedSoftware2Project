@@ -9,6 +9,16 @@ import java.util.Vector;
 import org.springframework.stereotype.Component;
 
 import com.example.fawry.model.*;
+import com.example.fawry.model.DiscountModel.DiscountDecorator;
+import com.example.fawry.model.ProvidersModel.Provider;
+import com.example.fawry.model.RegistrationModel.Account;
+import com.example.fawry.model.ServiceModel.Donations;
+import com.example.fawry.model.ServiceModel.InternetPaymentServices;
+import com.example.fawry.model.ServiceModel.MonthlyReceipt;
+import com.example.fawry.model.ServiceModel.QuarterReceipt;
+import com.example.fawry.model.ServiceModel.Services;
+import com.example.fawry.model.ServiceModel.mobileRechargeService;
+import com.example.fawry.model.TransactionModel.Transaction;
 /**
 *
 * @author 

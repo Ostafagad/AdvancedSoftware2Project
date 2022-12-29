@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.fawry.model.Response;
-import com.example.fawry.model.Transaction;
+import com.example.fawry.model.TransactionModel.Transaction;
 import com.example.fawry.service.CustomerService.Refund;
 @RestController
 @RequestMapping("/RefundController")

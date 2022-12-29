@@ -6,7 +6,8 @@ import java.util.Objects;
 import org.springframework.stereotype.Service;
 
 import com.example.fawry.database.DataBase;
-import com.example.fawry.model.Account;
+import com.example.fawry.model.RegistrationModel.Account;
+
 @Service
 public class AdminRegistration {
 	public Boolean SignUP(Account a) {

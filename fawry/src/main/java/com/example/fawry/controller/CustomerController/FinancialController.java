@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.fawry.database.DataBase;
-import com.example.fawry.model.Cashe;
-import com.example.fawry.model.CreditCard;
+
 import com.example.fawry.model.Response;
-import com.example.fawry.model.Services;
-import com.example.fawry.model.Transaction;
-import com.example.fawry.model.Wallet;
+
+
+import com.example.fawry.model.PaymentModel.Cashe;
+import com.example.fawry.model.PaymentModel.CreditCard;
+import com.example.fawry.model.PaymentModel.Wallet;
 import com.example.fawry.service.CustomerService.FinancialService;
 import com.example.fawry.service.CustomerService.SearchService;
 @RestController

@@ -6,7 +6,8 @@ import java.util.Objects;
 import org.springframework.stereotype.Service;
 
 import com.example.fawry.database.DataBase;
-import com.example.fawry.model.Services;
+import com.example.fawry.model.ServiceModel.Services;
+
 
 @Service
 public class SearchService {
