@@ -87,7 +87,7 @@ public class FinancialController {
         }
 
         response.setStatus(true);
-        response.setMessage("payment process with Wallet is successful");
+        response.setMessage("Add to Wallet process is successful");
         response.object=wallet;
         return response;
 	}
@@ -104,7 +104,7 @@ public class FinancialController {
         }
 
         response.setStatus(true);
-        response.setMessage("payment process with CreditCard is successful");
+        response.setMessage("Add to credit card process is successful");
         response.object=creditcard;
         return response;
 	}

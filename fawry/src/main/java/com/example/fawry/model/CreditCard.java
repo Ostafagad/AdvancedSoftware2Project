@@ -4,9 +4,10 @@ package com.example.fawry.model;
 public class CreditCard implements Payment {
 	private String cardnumber;
 	private String password;
-	private double cardBalance;
+	private static double cardBalance=0.0;
 	public double cost;
 	public String serviceName;
+	private static double funds=0.0;
 	@Override
 	public void pay(double amount) {
 		cardBalance-=amount;
@@ -28,10 +29,10 @@ public class CreditCard implements Payment {
 	}
 	@Override
 	public void addfunds(double d) {
-		cardBalance+=d;
+		cardBalance+=funds;
 	}
 	public double getCardBalance() {
-		return this.cardBalance;
+		return cardBalance;
 	}
 	
 	public void setCardBalance(double cardBalance) {
@@ -48,6 +49,12 @@ public class CreditCard implements Payment {
 	}
 	public void setCost(double cost) {
 		this.cost = cost;
+	}
+	public static double getFunds() {
+		return funds;
+	}
+	public void setFunds(double funds) {
+		this.funds = funds;
 	}
 	
 }

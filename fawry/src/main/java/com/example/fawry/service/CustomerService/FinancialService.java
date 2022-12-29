@@ -92,55 +92,26 @@ public class FinancialService {
     	return true;
     }
 	public boolean AddFundsToWallet(Wallet w) {
-    	//Services service= DataBase.getdb1().services.get(payment.getServiceName());
     	try {	
-    		for (Map.Entry<String, Services> entry : DataBase.getdb1().services.entrySet()) {
-        		 if(Objects.equals(entry.getKey().toLowerCase(), w.getServiceName().toLowerCase()))
-        		 {
-        		    w.addfunds(w.getCost());
-        			 entry.getValue().setCost(w.getCost());
+        		     w.addfunds(Wallet.getFunds());
         			 return true;
-        		 }
-        			
-        		        	
-        	}
-    		////////
-    	//	if(DataBase.getdb1().services.get(payment.getServiceName())==null)
-    			return false;
-    	}catch (Exception e) {
+    	}
+    	catch (Exception e) {
             System.out.println("Exception in pay as" + e.getMessage());
+            return false;
         }
-    	
-//    	payment.pay(payment.getCost());
-//    	DataBase.getdb1().services.get(payment.getServiceName()).setCost(payment.getCost());
-//    	this.customer.setT(new Transaction(Customer.custid,payment.getCost()));
-    	//DataBase.getdb1().customerTransactions.add(this.customer.getT());
-    	return true;
     }
 	public boolean AddFundsToCreditCard(CreditCard creditcard) {
-    	//Services service= DataBase.getdb1().services.get(payment.getServiceName());
     	try {	
-    		for (Map.Entry<String, Services> entry : DataBase.getdb1().services.entrySet()) {
-        		 if(Objects.equals(entry.getKey().toLowerCase(),creditcard.getServiceName().toLowerCase()))
-        		 {
-        			 creditcard.addfunds(creditcard.getCost());
-        			 entry.getValue().setCost(creditcard.getCost());
+    		
+        			 creditcard.addfunds(CreditCard.getFunds());
+                     creditcard.getcardnum();
+                     creditcard.getpass();
         			 return true;
         		 }
-        			
-        		        	
-        	}
-    		////////
-    	//	if(DataBase.getdb1().services.get(payment.getServiceName())==null)
-    			return false;
-    	}catch (Exception e) {
+    	catch (Exception e) {
             System.out.println("Exception in pay as" + e.getMessage());
+            return false;
         }
-    	
-//    	payment.pay(payment.getCost());
-//    	DataBase.getdb1().services.get(payment.getServiceName()).setCost(payment.getCost());
-//    	this.customer.setT(new Transaction(Customer.custid,payment.getCost()));
-    	//DataBase.getdb1().customerTransactions.add(this.customer.getT());
-    	return true;
     }
 }

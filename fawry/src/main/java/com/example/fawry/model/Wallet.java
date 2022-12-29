@@ -1,9 +1,10 @@
 package com.example.fawry.model;
 
 public class Wallet implements Payment {
-	private double balance;
+	private static double balance=0.0;
 	public double cost;
 	public String serviceName;
+	private static double funds=0.0;
 	@Override
 	public void pay(double amount) {
 		
@@ -12,7 +13,8 @@ public class Wallet implements Payment {
 	}
 	public void addfunds(double d)
 	{
-		balance+=d;
+		
+		balance+=funds;
 	}
 	public double getbalance() {
 		return this.balance;
@@ -32,6 +34,12 @@ public class Wallet implements Payment {
 	}
 	public void setServiceName(String serviceName) {
 		this.serviceName = serviceName;
+	}
+	public static double getFunds() {
+		return funds;
+	}
+	public void setFunds(double funds) {
+		this.funds = funds;
 	}
 
 }
