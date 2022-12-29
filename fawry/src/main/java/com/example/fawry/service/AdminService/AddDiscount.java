@@ -7,12 +7,11 @@ import com.example.fawry.database.DataBase;
 
 import com.example.fawry.model.DiscountDecorator;
 
-
 @Service
 public class AddDiscount {
 
 	public boolean addDiscount(DiscountDecorator d) {
-		  try {
+		  
 			  try {
 		        	if(DataBase.getdb1().discounts.isEmpty()) {
 		    			DataBase.getdb1().discounts.add(d);
@@ -20,8 +19,9 @@ public class AddDiscount {
 		        	}
 		        	for (DiscountDecorator entry : DataBase.getdb1().discounts ) {
 		        		 if(entry.getsername().toLowerCase().equals(d.getsername().toLowerCase()) && entry.getDiscountname().toLowerCase().equals(d.getDiscountname().toLowerCase())) 
-		        			return false;
-		        		        	
+		        		 {  
+		        			 return false;
+		        		 }
 		        	}
 		        	DataBase.getdb1().discounts.add(d);
 					
