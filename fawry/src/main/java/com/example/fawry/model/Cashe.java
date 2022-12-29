@@ -10,11 +10,8 @@ public class Cashe implements Payment {
 		cashValue-=amount;
 		//Form.handler=true;
 	}
-	@Override
-	public void addfunds(double d) {
-		cashValue+=d;
-		
-	}
+	
+
 	public double getCashValue() {
 		return this.cashValue;
 	}

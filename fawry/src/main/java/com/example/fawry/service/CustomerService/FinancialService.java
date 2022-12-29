@@ -91,9 +91,9 @@ public class FinancialService {
     	//DataBase.getdb1().customerTransactions.add(this.customer.getT());
     	return true;
     }
-	public boolean AddFundsToWallet(Wallet w) {
+	public boolean AddFundsToWallet(CreditCard w) {
     	try {	
-        		     w.addfunds(Wallet.getFunds());
+        		     w.AddFundsToWallet(CreditCard.getFunds());
         			 return true;
     	}
     	catch (Exception e) {

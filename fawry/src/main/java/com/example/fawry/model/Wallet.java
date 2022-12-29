@@ -11,13 +11,13 @@ public class Wallet implements Payment {
 		balance-=amount;
 		//Form.handler=true;
 	}
-	public void addfunds(double d)
+	public static void addfunds(double d)
 	{
 		
-		balance+=funds;
+		balance+=d;
 	}
-	public double getbalance() {
-		return this.balance;
+	public static double getbalance() {
+		return balance;
 	}
 	
 	public void setBalance(double balance) {
