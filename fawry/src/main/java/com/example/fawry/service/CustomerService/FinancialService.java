@@ -159,7 +159,7 @@ public class FinancialService {
         }
     }
 	
-	public boolean askForRefund(int transactionId) {
+	public Transaction askForRefund(int transactionId) {
 		
 		try {	
     		for (Map.Entry<Integer,Transaction> entry : DataBase.getdb1().customerTransactions.entrySet()) {
@@ -167,16 +167,16 @@ public class FinancialService {
         		 {
         		    
         			 DataBase.refunds.put(entry.getKey(), entry.getValue());
-        			 return true;
+        			 return entry.getValue();
         		 }		
         		        	
         	}
     		
-    			return false;
+    			return null;
     	}catch (Exception e) {
             System.out.println("Exception in pay as" + e.getMessage());
         }
-		return true;
+		return null;
 	}
 	
 }

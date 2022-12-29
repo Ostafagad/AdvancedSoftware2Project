@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,7 @@ import com.example.fawry.model.Cashe;
 import com.example.fawry.model.CreditCard;
 import com.example.fawry.model.Response;
 import com.example.fawry.model.Services;
+import com.example.fawry.model.Transaction;
 import com.example.fawry.model.Wallet;
 import com.example.fawry.service.CustomerService.FinancialService;
 import com.example.fawry.service.CustomerService.SearchService;
@@ -108,4 +111,23 @@ public class FinancialController {
         response.object=creditcard;
         return response;
 	}
+	
+	@GetMapping("/askForRefund/{id}")
+    public  Response <Transaction> askForRefund(@PathVariable ("id") int transactionId) {
+		System.out.println("in ask for refund " + transactionId);
+		Transaction res=financialservice.askForRefund(transactionId);
+		Response<Transaction> response = new Response<Transaction>();
+		if (res==null) {
+            response.setStatus(false);
+            response.setMessage("Wrong Transaction ID.Try to rewrite it");
+            response.object=null;
+            return response;
+        }
+
+        response.setStatus(true);
+        response.setMessage("Your refund has been sent.Wait for a response");
+        response.object=res;
+        return response;
+	}
+	
 }
