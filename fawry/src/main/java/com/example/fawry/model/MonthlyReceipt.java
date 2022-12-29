@@ -2,7 +2,9 @@ package com.example.fawry.model;
 
 
 public class MonthlyReceipt extends LandlineServices {
-
+	public MonthlyReceipt(String name){
+		this.serviceName=name;
+	}
 	@Override
 	public void setlandlinecost() {
 		this.cost=cost*1;

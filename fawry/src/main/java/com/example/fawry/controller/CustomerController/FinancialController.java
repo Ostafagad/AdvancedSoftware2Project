@@ -112,22 +112,6 @@ public class FinancialController {
         return response;
 	}
 	
-	@GetMapping("/askForRefund/{id}")
-    public  Response <Transaction> askForRefund(@PathVariable ("id") int transactionId) {
-		System.out.println("in ask for refund " + transactionId);
-		Transaction res=financialservice.askForRefund(transactionId);
-		Response<Transaction> response = new Response<Transaction>();
-		if (res==null) {
-            response.setStatus(false);
-            response.setMessage("Wrong Transaction ID.Try to rewrite it");
-            response.object=null;
-            return response;
-        }
-
-        response.setStatus(true);
-        response.setMessage("Your refund has been sent.Wait for a response");
-        response.object=res;
-        return response;
-	}
+	
 	
 }

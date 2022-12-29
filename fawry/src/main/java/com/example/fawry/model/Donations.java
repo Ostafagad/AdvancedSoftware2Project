@@ -2,8 +2,8 @@ package com.example.fawry.model;
 
 
 public class Donations extends Services {
-	public Donations () {
-		this.description="Donations";
+	public Donations (String name) {
+		this.serviceName=name;
 	}
 	
 	public double cost() {
@@ -18,7 +18,7 @@ public class Donations extends Services {
 	}
     
 	public String getsername() {
-		return this.description;
+		return this.serviceName;
 	}
 
 

@@ -158,25 +158,6 @@ public class FinancialService {
             return false;
         }
     }
-	
-	public Transaction askForRefund(int transactionId) {
-		
-		try {	
-    		for (Map.Entry<Integer,Transaction> entry : DataBase.getdb1().customerTransactions.entrySet()) {
-        		 if(Objects.equals(entry.getKey(), transactionId))
-        		 {
-        		    
-        			 DataBase.refunds.put(entry.getKey(), entry.getValue());
-        			 return entry.getValue();
-        		 }		
-        		        	
-        	}
-    		
-    			return null;
-    	}catch (Exception e) {
-            System.out.println("Exception in pay as" + e.getMessage());
-        }
-		return null;
-	}
-	
 }
+	
+	

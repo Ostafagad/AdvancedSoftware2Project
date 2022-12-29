@@ -1,8 +1,8 @@
 package com.example.fawry.model;
 
 public class InternetPaymentServices extends Services{
-	public InternetPaymentServices () {
-		this.description="Internet Payment Services";
+	public InternetPaymentServices (String name) {
+		this.serviceName=name;
 	}
 	
 	public double cost() {
@@ -17,7 +17,7 @@ public class InternetPaymentServices extends Services{
 	}
     
 	public String getsername() {
-		return this.description;
+		return this.serviceName;
 	}
 
 	/*@Override

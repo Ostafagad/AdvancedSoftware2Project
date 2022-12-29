@@ -3,7 +3,7 @@ package com.example.fawry.model;
 
 public abstract class  LandlineServices extends Services {
 	public LandlineServices () {
-		this.description="Landline Services";
+		
 	}
 	
 	public double cost() {
@@ -19,7 +19,7 @@ public abstract class  LandlineServices extends Services {
 	public abstract void setlandlinecost();
     
 	public String getsername() {
-		return this.description;
+		return this.serviceName;
 	}
 
 	/*@Override

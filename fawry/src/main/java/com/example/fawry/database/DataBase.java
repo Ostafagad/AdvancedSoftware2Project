@@ -29,10 +29,16 @@ public class DataBase {
     public static Map<String, Services> services = new HashMap<String, Services>();
        private DataBase()
     {
-//		this.adminPasswod="123";
-//		this.adminUserName="aaaa";
-    	
-    	
+    	   Services service1=new InternetPaymentServices("InternetPayment");
+    	   Services service2=new  mobileRechargeService("mobileRecharge");
+    	   Services service3=new QuarterReceipt("QuarterReceipt");
+    	   Services service4=new MonthlyReceipt("MonthlyReceipt");
+    	   Services service5=new Donations("Donations");
+    	   services.put("Donations", service5);
+    	   services.put("InternetPayment", service1);
+    	   services.put(" mobileRecharge", service2);
+    	   services.put("QuarterReceipt", service3);
+    	   services.put("MonthlyReceipt", service4);
     	
     }
    
