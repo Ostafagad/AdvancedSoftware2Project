@@ -4,7 +4,7 @@ package com.example.fawry.model.PaymentModel;
 public class CreditCard implements Payment {
 	private String cardnumber;
 	private String password;
-	private static double cardBalance=100.0;
+	private static double cardBalance=100000.0;
 	public double cost;
 	public String serviceName;
 	private static double funds=0.0;

@@ -35,14 +35,14 @@ public class FinancialService {
   
         		    payment.pay(payment.getCost());
         			 entry.getValue().setCost(payment.getCost());
-        			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"Payment",false);
+        			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"payment",false);
         			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 }
         			 else
         			 {
         				  payment.pay(payment.getCost());
              			 entry.getValue().setCost(payment.getCost());
-             			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"Payment",false);
+             			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"payment",false);
              			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 
         			 }
@@ -73,14 +73,14 @@ public class FinancialService {
         				 payment.setCost(payment.getCost()-(payment.getCost()*dis));
         		    payment.pay(payment.getCost());
         			 entry.getValue().setCost(payment.getCost());
-        			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"Payment",false);
+        			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"payment",false);
         			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 }
         			 else
         			 {
+        				 entry.getValue().setCost(payment.getCost());
         				  payment.pay(payment.getCost());
-             			 entry.getValue().setCost(payment.getCost());
-             			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"Payment",false);
+             			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"payment",false);
              			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 }
         			 return true;
@@ -113,14 +113,14 @@ public class FinancialService {
         				 payment.setCost(payment.getCost()-(payment.getCost()*dis));
         		    payment.pay(payment.getCost());
         			 entry.getValue().setCost(payment.getCost());
-        			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"Payment",false);
+        			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"payment",false);
         			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 }
         			 else
         			 {
         				 payment.pay(payment.getCost());
             			 entry.getValue().setCost(payment.getCost());
-            			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"Payment",false);
+            			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"payment",false);
             			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 }
         			 return true;
