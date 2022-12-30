@@ -26,17 +26,16 @@ import com.example.fawry.model.TransactionModel.Transaction;
 @Component
 
 public class DataBase {
-	private String adminUserName="aaaa";
-    private String adminPasswod="123";
+	private String adminUserName="admin";
+    private String adminPasswod="12345";
     private static DataBase database=null;
     public static Map<String, Provider> providers = new HashMap<String, Provider>();
     public static Vector<DiscountDecorator> discounts=new Vector<>();
-
     public static Map<String, Account> cust_accounts = new HashMap<String, Account>();
-    public static Map<String, Account> admin_account = new HashMap<String, Account>();
     public static Map<Integer,Transaction>refunds=new HashMap<Integer,Transaction>();
     public static Map<Integer,Transaction>customerTransactions=new HashMap<Integer,Transaction>();
     public static Map<String, Services> services = new HashMap<String, Services>();
+    
        private DataBase()
     {
     	   Services service1=new InternetPaymentServices("InternetPayment");

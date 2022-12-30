@@ -23,13 +23,9 @@ public class CustomerRegsration {
         		        	
         	}
 			DataBase.getdb1().cust_accounts.put(a.getEmail().toLowerCase(), a);
+			Account acc=new Account();
 
-        	///////
-        	
-//            if (DataBase.getdb1().cust_accounts.get(a.getEmail().toLowerCase()) != null) {
-//                return false;
-//            }
-//            DataBase.getdb1().cust_accounts.put(a.getEmail().toLowerCase(), a);
+ 
         } catch (Exception e) {
             System.out.println("Exception in account as" + e.getMessage());
             return false;
@@ -37,12 +33,7 @@ public class CustomerRegsration {
         return true;
     }
     public Account SignIn(String em,String pass) {
-        try {
-//        	Account a=DataBase.getdb1().cust_accounts.get(em);
-//        	if(a.getPassword()==pass)
-    			//return DataBase.getdb1().cust_accounts.get(em);
-
-        		
+        try {	
         	for (Map.Entry<String, Account> entry : DataBase.getdb1().cust_accounts.entrySet()) {
         		if(DataBase.getdb1().cust_accounts.isEmpty())
         			return null;

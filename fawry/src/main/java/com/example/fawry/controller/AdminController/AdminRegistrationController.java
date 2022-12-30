@@ -17,39 +17,37 @@ import com.example.fawry.service.AdminService.AdminRegistration;
 public class AdminRegistrationController {
 	@Autowired
 	AdminRegistration adminRegistration=new AdminRegistration();  
-	@PostMapping("/signup")
-    public Response signup(@RequestBody Account a) {
-        System.out.println("In Add Admin" + a);
-        boolean res = adminRegistration.SignUP(a);
+//	@PostMapping("/signup")
+//    public Response signup(@RequestBody Account a) {
+//        System.out.println("In Add Admin" + a);
+//        boolean res = adminRegistration.SignUP(a);
+//        Response response = new Response();
+//        if (!res) {
+//            response.setStatus(false);
+//            response.setMessage("Admin UserName or Email Already Exists");
+//            return response;
+//        }
+//
+//        response.setStatus(true);
+//        response.setMessage("Admin Account created successfully");
+//        response.object=a;
+//        return response;
+//    }
+ @GetMapping("/signin/{pass}/{name}")
+    public Response signin(@PathVariable("pass") String pass,@PathVariable("name") String name) {
+        boolean admin = adminRegistration.SignIn(name,pass);
         Response response = new Response();
-        if (!res) {
-            response.setStatus(false);
-            response.setMessage("Admin UserName or Email Already Exists");
-            return response;
-        }
-
-        response.setStatus(true);
-        response.setMessage("Admin Account created successfully");
-        response.object=a;
-        return response;
-    }
- @GetMapping("/signin/{pass}/{email}")
-    public Response<Account> signin(@PathVariable("pass") String pass,@PathVariable("email") String email) {
-        var customer = adminRegistration.SignIn(email,pass);
-        Response<Account> response = new Response<Account>();
-        if (customer == null ) {
+        if (!admin ) {
         	response.setStatus(false);
-            response.setMessage("Admin Account Not Found");
-            response.object = null;
-
+            response.setMessage("invalid username or password");
+ 
 	        return response;
         }
         response.setStatus(true);
         response.setMessage("Admin Sign in Successfully");
-        response.object = customer;
 
      return response;
 
-        
+
     }
 }
