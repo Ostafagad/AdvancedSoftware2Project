@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.springframework.stereotype.Service;
 
 import com.example.fawry.database.DataBase;
+import com.example.fawry.model.PaymentModel.CreditCard;
 import com.example.fawry.model.TransactionModel.Transaction;
 
 
@@ -19,6 +20,8 @@ public Transaction askForRefund(int transactionId) {
         		 {
         		    
         			 DataBase.refunds.put(entry.getKey(), entry.getValue());
+        			 Transaction t=new Transaction("AskforRefund",entry.getValue().getamount(),"refund",false);
+        			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 return entry.getValue();
         		 }		
         		        	

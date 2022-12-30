@@ -27,10 +27,10 @@ public class ListTransaction {
 	    
 	}*/
 
-	public ArrayList<Transaction> listPaymentTransactions(String type) {
+	public ArrayList<Transaction> listTransactions(String type) {
         try {
         	ArrayList<Transaction>d=new ArrayList <Transaction>();
-        if(type.toLowerCase()=="payment")	{
+        if(type.toLowerCase().equals("payment"))	{
         	for (Map.Entry<Integer,Transaction> entry : DataBase.getdb1().customerTransactions.entrySet()) {
           		 if(Objects.equals(entry.getValue().getType(), "payment"))
           		 {
@@ -39,7 +39,7 @@ public class ListTransaction {
         	         } 
         	return d;
         	 }
-        else if(type.toLowerCase()=="refund") {
+        else if(type.toLowerCase().equals("refund")) {
         	
         	for (Map.Entry<Integer,Transaction> entry : DataBase.getdb1().customerTransactions.entrySet()) {
          		 if(Objects.equals(entry.getValue().getType(), "refund"))
@@ -49,9 +49,9 @@ public class ListTransaction {
        	         } 
        	return d;
         }
-        else if (type.toLowerCase()=="addtowallet") {
+        else if (type.toLowerCase().equals("wallet")) {
         	for (Map.Entry<Integer,Transaction> entry : DataBase.getdb1().customerTransactions.entrySet()) {
-        		 if(Objects.equals(entry.getValue().getType(), "addtowallet"))
+        		 if(Objects.equals(entry.getValue().getType(), "wallet"))
         		 {
         			 d.add(entry.getValue());
         		 }

@@ -17,9 +17,21 @@ public class ListTransactionController {
 	ListTransaction transactions=new ListTransaction();
 	
 	@GetMapping("/paymenttransactions/{type}")
-	public ArrayList<Transaction> getAllTransactions(@PathVariable("type") String type) {
+	public ArrayList<Transaction> getPaymentTransactions(@PathVariable("type") String type) {
         System.out.println("get All Transactions");
-        return transactions.listPaymentTransactions(type);
+        return transactions.listTransactions(type);
+    }
+	
+	@GetMapping("/refundtransactions/{type}")
+	public ArrayList<Transaction> getRefunTransactions(@PathVariable("type") String type) {
+        System.out.println("get All Transactions");
+        return transactions.listTransactions(type);
+    }
+	
+	@GetMapping("/wallettransactions/{type}")
+	public ArrayList<Transaction> getWalletTransactions(@PathVariable("type") String type) {
+        System.out.println("get All Transactions");
+        return transactions.listTransactions(type);
     }
 	
 }
