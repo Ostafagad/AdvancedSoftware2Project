@@ -8,7 +8,7 @@ public abstract class DiscountDecorator  {
 	public double discount;
 	public String discountname;
 public abstract String getsername();
-public abstract double getDiscountValue() ;
+public abstract double getdiscount() ;
 public abstract void setdiscount(double discount) ;
 public abstract void setsername(String s) ;
 public abstract String getDiscountname() ;

@@ -27,7 +27,7 @@ public class FinancialService {
         			 double dis=0;
         			 for (DiscountDecorator discount : DataBase.getdb1().discounts )  {
         				 if(payment.getServiceName().equals(discount.getsername()))
-        					 dis+=discount.getDiscountValue(); 
+        					 dis+=discount.getdiscount(); 
         			 }
         			 if(dis!=0) {
         				 
@@ -66,7 +66,7 @@ public class FinancialService {
         			 double dis=0;
         			 for (DiscountDecorator discount : DataBase.getdb1().discounts )  {
         				 if(payment.getServiceName().equals(discount.getsername()))
-        					 dis+=discount.getDiscountValue(); 
+        					 dis+=discount.getdiscount(); 
         			 }
         			 if(dis!=0) {
         				 
@@ -106,7 +106,7 @@ public class FinancialService {
         			 double dis=0;
         			 for (DiscountDecorator discount : DataBase.getdb1().discounts )  {
         				 if(payment.getServiceName().equals(discount.getsername()))
-        					 dis+=discount.getDiscountValue(); 
+        					 dis+=discount.getdiscount(); 
         			 }
         			 if(dis!=0) {
         				 

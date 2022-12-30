@@ -10,7 +10,7 @@ public class OverAllDiscount extends DiscountDecorator {
 	}
 
 	@Override
-	public double getDiscountValue() {
+	public double getdiscount() {
 	
 		return this.discount;
 	}

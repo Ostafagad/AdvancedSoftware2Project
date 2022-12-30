@@ -9,7 +9,7 @@ public class SpecificDiscount extends DiscountDecorator  {
 	}
 
 	@Override
-	public double getDiscountValue() {
+	public double getdiscount() {
 	
 		return this.discount;
 	}
