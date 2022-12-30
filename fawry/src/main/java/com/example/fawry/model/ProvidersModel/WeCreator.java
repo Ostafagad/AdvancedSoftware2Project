@@ -1,10 +1,11 @@
 package com.example.fawry.model.ProvidersModel;
 
+import java.util.ArrayList;
 
 public class WeCreator extends ProviderCreator{
 	@Override
-	public Provider creatProvider(String name,double amount) {
-		return We.getWe();
+	public Provider creatProvider(String name,double amount,ArrayList <String>fields) {
+		return We.getWe(name, amount,fields);
 	}
 
 }

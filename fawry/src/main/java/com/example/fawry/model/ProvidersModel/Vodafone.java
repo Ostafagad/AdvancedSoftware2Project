@@ -8,35 +8,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class Vodafone extends Provider {
 	private static Vodafone v=null;
-	private Vodafone() {
-		
-		
-//		this.fields.add("phone number");
-//		this.fields.add("City");
-		
+	private Vodafone() {	
 	}
-	
-	private Vodafone(String name,double amount) {
+	private Vodafone(String name,double amount,ArrayList <String>fields) {
 		this.name=name;
 		this.amount=amount;
-		
-//		this.fields.add("phone number");
-//		this.fields.add("City");
+		this.fields=fields;
 		
 	}
 	
-	public static Vodafone getvodafone(String name,double amount)
+	public static Vodafone getvodafone(String name,double amount,ArrayList <String>fields)
 	{
 		if(v==null)
-			v=new Vodafone( name, amount);
+			v=new Vodafone( name, amount,fields);
 		return v;
 	}
-	
-	public void setForm(ArrayList <String>inputfields,double amount)
-	{
-//		this.inputfields=inputfields;
-		this.amount=amount;
-	}
-	
-
 }
