@@ -140,7 +140,7 @@ public class FinancialService {
 	public boolean AddFundsToWallet(CreditCard card) {
     	try {	
         		     card.AddFundsToWallet(CreditCard.getFunds());
-        		     Transaction t=new Transaction("AddToWallet",CreditCard.getFunds(),"Wallet",false);
+        		     Transaction t=new Transaction("AddToWallet",CreditCard.getFunds(),"wallet",false);
         			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 return true;
     	}
