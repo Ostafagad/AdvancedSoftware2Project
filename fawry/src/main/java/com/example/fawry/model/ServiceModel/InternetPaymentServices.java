@@ -1,6 +1,10 @@
 package com.example.fawry.model.ServiceModel;
 
 public class InternetPaymentServices extends Services{
+	public InternetPaymentServices(String serviceProvider,String serviceName){
+		this.serviceProvider=serviceProvider;
+		this.serviceName=serviceName;
+	}
 	public InternetPaymentServices (String name) {
 		this.serviceName=name;
 	}
@@ -16,7 +20,7 @@ public class InternetPaymentServices extends Services{
 		
 	}
     
-	public String getsername() {
+	public String getserviceName() {
 		return this.serviceName;
 	}
 

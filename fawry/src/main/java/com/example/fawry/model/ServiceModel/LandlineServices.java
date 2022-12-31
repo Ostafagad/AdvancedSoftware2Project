@@ -2,6 +2,7 @@ package com.example.fawry.model.ServiceModel;
 
 
 public abstract class  LandlineServices extends Services {
+	
 	public LandlineServices () {
 		
 	}
@@ -18,7 +19,7 @@ public abstract class  LandlineServices extends Services {
 //	}
 	public abstract void setlandlinecost();
     
-	public String getsername() {
+	public String getserviceName() {
 		return this.serviceName;
 	}
 

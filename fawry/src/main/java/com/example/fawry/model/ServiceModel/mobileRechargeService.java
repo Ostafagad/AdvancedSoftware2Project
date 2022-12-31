@@ -1,6 +1,10 @@
 package com.example.fawry.model.ServiceModel;
 
 public class mobileRechargeService extends Services {
+	public mobileRechargeService(String serviceProvider,String serviceName){
+		this.serviceProvider=serviceProvider;
+		this.serviceName=serviceName;
+	}
 	public mobileRechargeService () {}
 	public mobileRechargeService (String description) {
 		
@@ -23,7 +27,7 @@ public class mobileRechargeService extends Services {
 	 this.serviceName=description;
 	}
 	@Override
-	public String getsername() {
+	public String getserviceName() {
 		return this.serviceName;
 	}
 	

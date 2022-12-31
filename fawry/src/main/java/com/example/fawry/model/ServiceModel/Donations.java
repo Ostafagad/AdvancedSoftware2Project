@@ -17,7 +17,7 @@ public class Donations extends Services {
 		
 	}
     
-	public String getsername() {
+	public String getserviceName() {
 		return this.serviceName;
 	}
 

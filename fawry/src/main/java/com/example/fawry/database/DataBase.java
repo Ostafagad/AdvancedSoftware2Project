@@ -35,7 +35,11 @@ public class DataBase {
     public static Map<Integer,Transaction>refunds=new HashMap<Integer,Transaction>();
     public static Map<Integer,Transaction>customerTransactions=new HashMap<Integer,Transaction>();
     public static Map<String, Services> services = new HashMap<String, Services>();
-    
+//    public static Map<String, Services> orangeServices = new HashMap<String, Services>();
+//    public static Map<String, Services> weServices = new HashMap<String, Services>();
+//    public static Map<String, Services> etisalatServices = new HashMap<String, Services>();
+//    public static Map<String, Services> vodafoneServices = new HashMap<String, Services>();
+    public static Vector<Services> providersServices=new Vector<>();
        private DataBase()
     {
     	   Services service1=new InternetPaymentServices("InternetPayment");
@@ -43,12 +47,31 @@ public class DataBase {
     	   Services service3=new QuarterReceipt("QuarterReceipt");
     	   Services service4=new MonthlyReceipt("MonthlyReceipt");
     	   Services service5=new Donations("Donations");
+    	   Services vodafoneinternetService=new InternetPaymentServices("vodafone","InternetPayment");
+    	   Services weinternetservice=new InternetPaymentServices("we","InternetPayment");
+    	   Services etisalatinternetervice=new InternetPaymentServices("etisalat","InternetPayment");
+    	   Services orangeinternetservice=new InternetPaymentServices("orange","InternetPayment");
+    	   Services vodafoneRechargeservice=new  mobileRechargeService("vodafone","mobileRecharge");
+    	   Services weRechargeservice2=new  mobileRechargeService("we","mobileRecharge");
+    	   Services etisalatRechargeservice2=new  mobileRechargeService("etisalat","mobileRecharge");
+    	   Services orangeRechargeservice2=new  mobileRechargeService("orange","mobileRecharge");
+    	   
     	   services.put("Donations", service5);
     	   services.put("InternetPayment", service1);
     	   services.put(" mobileRecharge", service2);
     	   services.put("QuarterReceipt", service3);
     	   services.put("MonthlyReceipt", service4);
-    	
+    	   providersServices.add(vodafoneinternetService);
+    	   providersServices.add(weinternetservice);
+    	   providersServices.add(etisalatinternetervice);
+    	   providersServices.add(orangeinternetservice);
+    	   providersServices.add(vodafoneRechargeservice);
+    	   providersServices.add(weRechargeservice2);
+    	   providersServices.add(etisalatRechargeservice2);
+    	   providersServices.add(orangeRechargeservice2);
+    	   providersServices.add(service3);
+    	   providersServices.add(service4);
+    	   providersServices.add(service5);
     }
    
     

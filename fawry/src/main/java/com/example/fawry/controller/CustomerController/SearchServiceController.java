@@ -1,5 +1,7 @@
 package com.example.fawry.controller.CustomerController;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,21 +18,21 @@ public class SearchServiceController {
 	@Autowired
 	SearchService searchservice=new SearchService();
 	@GetMapping("/searchservice/{description}")
-    public Response<Services> searchService(@PathVariable("description") String description) {
-        var service = searchservice.SearchServices(description);
-        Response<Services> response = new Response<Services>();
-        if (service == null ) {
-          response.setStatus(false);
-            response.setMessage("Service Not Found");
-            response.object = null;
-
-          return response;
-        }
-        response.setStatus(true);
-        response.setMessage("Search Service Successfully");
-        response.object =  service;
-
-      return response;
+    public ArrayList<Services> searchService(@PathVariable("description") String description) {
+        return  searchservice.SearchServices(description);
+//        Response<Services> response = new Response<Services>();
+//        if (service == null ) {
+//          response.setStatus(false);
+//            response.setMessage("Service Not Found");
+//            response.object = null;
+//
+//          return response;
+//        }
+//        response.setStatus(true);
+//        response.setMessage("Search Service Successfully");
+//        response.object =  service;
+//
+//      return response;
 
         
     }

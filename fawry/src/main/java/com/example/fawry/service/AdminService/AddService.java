@@ -9,11 +9,11 @@ import com.example.fawry.model.ServiceModel.Services;
 public class AddService {
 	public boolean addService(Services ser) {
 		try {
-		      if(DataBase.getdb1().services.get(ser.getsername().toLowerCase())!=null) {
+		      if(DataBase.getdb1().services.get(ser.getserviceName().toLowerCase())!=null) {
 		        return false;
 		      }
 		     
-		        DataBase.getdb1().services.put(ser.getsername().toLowerCase(),ser);
+		        DataBase.getdb1().services.put(ser.getserviceName().toLowerCase(),ser);
 		      
 		      
 		    }catch (Exception e) {
