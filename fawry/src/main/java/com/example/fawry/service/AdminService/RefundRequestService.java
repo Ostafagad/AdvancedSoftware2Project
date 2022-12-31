@@ -16,16 +16,15 @@ import com.example.fawry.model.TransactionModel.Transaction;
 public class RefundRequestService {
 	public boolean acceptRefund(int id) {
 		try {
-		for (Map.Entry<Integer,Transaction> entry : DataBase.getdb1().refunds.entrySet()) {
-   		 if(Objects.equals(entry.getKey(), id))
+		
+   		 if(DataBase.getdb1().validateRefund( id))
    		 {
-   			 entry.getValue().setRefundStatus(true);
-   			 Wallet.addfunds(entry.getValue().getamount());
+   			DataBase.getdb1().refunds.get(id).setRefundStatus(true);
+   			 Wallet.addfunds(DataBase.getdb1().refunds.get(id).getamount());
    			 DataBase.getdb1().refunds.remove(id);
    			 return true;
-   		 }
-   			   		        	
-   	}			return false;
+   		 }   			   		        	
+   			return false;
 	}catch (Exception e) {
        System.out.println("Exception in pay as" + e.getMessage());
    }
@@ -34,17 +33,18 @@ public class RefundRequestService {
 	return true;
 	}
 	
+	
 	public boolean rejectRefund(int id) {
 		try {
-		for (Map.Entry<Integer,Transaction> entry : DataBase.getdb1().refunds.entrySet()) {
-   		 if(Objects.equals(entry.getKey(), id))
+		
+   		 if(DataBase.getdb1().validateRefund( id))
    		 {
-   			 entry.getValue().setRefundStatus(false);
+   			DataBase.getdb1().refunds.get(id).setRefundStatus(false);
    			DataBase.getdb1().refunds.remove(id);
    			 return true;
    		 }
    			   		        	
-   	}			return false;
+   				return false;
 	}catch (Exception e) {
        System.out.println("Exception in pay as" + e.getMessage());
    }

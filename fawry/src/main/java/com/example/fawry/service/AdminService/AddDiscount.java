@@ -14,22 +14,18 @@ public class AddDiscount {
 	public boolean addDiscount(DiscountDecorator d) {
 		  
 			  try {
-		        	if(DataBase.getdb1().discounts.isEmpty()) {
-		    			DataBase.getdb1().discounts.add(d);
-		    			return true;
-		        	}
-		        	for (DiscountDecorator entry : DataBase.getdb1().discounts ) {
-		        		 if(entry.getsername().toLowerCase().equals(d.getsername().toLowerCase()) && entry.getDiscountname().toLowerCase().equals(d.getDiscountname().toLowerCase())) 
-		        		 {  
-		        			 return false;
-		        		 }
-		        	}
+		        if(DataBase.getdb1().validatediscount(d)) {
 		        	DataBase.getdb1().discounts.add(d);
+		        	return true;
+		        }
+		        return false;
 					
 		        } catch (Exception e) {
 		            System.out.println("Exception in account as" + e.getMessage());
 		            return false;
 		        }
-		        return true;
+		       
 }
+	
+	
 }

@@ -15,17 +15,17 @@ public class Refund {
 public Transaction askForRefund(int transactionId) {
 		
 		try {	
-    		for (Map.Entry<Integer,Transaction> entry : DataBase.getdb1().customerTransactions.entrySet()) {
-        		 if(Objects.equals(entry.getKey(), transactionId))
+        		 if(DataBase.getdb1().validateTransaction(transactionId))
         		 {
-        		    
-        			 DataBase.refunds.put(entry.getKey(), entry.getValue());
-        			 Transaction t=new Transaction("AskforRefund",entry.getValue().getamount(),"refund",false);
+        			
+        			 DataBase.refunds.put(transactionId,DataBase.getdb1().customerTransactions.get(transactionId));
+        			 Transaction t=new Transaction("AskforRefund",DataBase.getdb1().customerTransactions.get(transactionId).getamount(),"refund");
         			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
-        			 return entry.getValue();
+        			 return DataBase.getdb1().customerTransactions.get(transactionId);
+
         		 }		
         		        	
-        	}
+        	
     		
     			return null;
     	}catch (Exception e) {

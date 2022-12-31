@@ -9,19 +9,22 @@ import com.example.fawry.model.ProvidersModel.Provider;
 public class AddProvider {
 	public boolean addProvider(Provider p) {
 	    try {
-	      if(DataBase.getdb1().providers.get(p.getName().toLowerCase())!=null) {
-	        return false;
-	      }
-	     
+	      
+	 
+	     if( DataBase.getdb1().validateProvider(p.getName())) {
 	        DataBase.getdb1().providers.put(p.getName().toLowerCase(),p);
+	        return true;
+	     }
+	     return false;
 	      
 	      
 	    }catch (Exception e) {
 	            System.out.println("Exception in provider as" + e.getMessage());
 	            return false;
 	        }
-	    return true;
+	
 	    
 	  }
+
 	
 }
