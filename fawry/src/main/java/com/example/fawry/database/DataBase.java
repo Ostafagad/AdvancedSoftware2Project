@@ -36,7 +36,6 @@ public class DataBase {
     public static Map<String, Account> cust_accounts = new HashMap<String, Account>();
     public static Map<Integer,Transaction>refunds=new HashMap<Integer,Transaction>();
     public static Map<Integer,Transaction>customerTransactions=new HashMap<Integer,Transaction>();
-
     public  Vector<Services> providersServices=new Vector<>();
     public boolean ValidateSignUp(Account a)
 	{
@@ -109,7 +108,7 @@ public class DataBase {
     }
 	public boolean validateProvider(String s)
 	{
-		if(DataBase.getdb1().providers.get(s.toLowerCase())!=null) {
+		if(DataBase.getdb1().providers.get(s.toLowerCase())==null) {
 			return true;
 		}
 		return false;
@@ -148,8 +147,7 @@ public class DataBase {
     }
     private DataBase()
     {
-    	   Services service1=new InternetPaymentServices("InternetPayment");
-    	   Services service2=new  mobileRechargeService("mobileRecharge");
+    	   
     	   Services service3=new QuarterReceipt("QuarterReceipt");
     	   Services service4=new MonthlyReceipt("MonthlyReceipt");
     	   Services service5=new Donations("Donations");

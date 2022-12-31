@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class OrangeCreator extends ProviderCreator {
 	@Override
-	public Provider creatProvider(String name,double amount,ArrayList <String>fields) {
-		return Orange.getOrange(name, amount,fields);
+	public Provider creatProvider(String name,ArrayList <String>fields) {
+		return Orange.getOrange(name,fields);
 	}
 
 }

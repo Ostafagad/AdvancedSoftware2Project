@@ -8,17 +8,13 @@ public abstract class Services {
 	public abstract double cost();
 	public abstract void setCost(double cost);
 	public abstract String getserviceName();
+	protected String serviceProvider;
 	public String getServiceProvider() {
 		return serviceProvider;
 	}
 	public void setServiceProvider(String serviceProvider) {
 		this.serviceProvider = serviceProvider;
 	}
-	protected String serviceProvider;
 	
-	//public abstract void getDiscountValue();
-	//protected static double finalDiscount=0;	
-	//protected static double discount;
-
 
 }

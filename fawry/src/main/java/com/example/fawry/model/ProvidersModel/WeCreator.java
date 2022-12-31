@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class WeCreator extends ProviderCreator{
 	@Override
-	public Provider creatProvider(String name,double amount,ArrayList <String>fields) {
-		return We.getWe(name, amount,fields);
+	public Provider creatProvider(String name,ArrayList <String>fields) {
+		return We.getWe(name,fields);
 	}
 
 }

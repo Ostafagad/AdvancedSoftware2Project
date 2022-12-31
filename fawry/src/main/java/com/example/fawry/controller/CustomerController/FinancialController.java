@@ -94,25 +94,5 @@ public class FinancialController {
         response.setMessage("Add to Wallet process is successful");
         response.object=card;
         return response;
-	}
-	@PostMapping("/addfundstocreditcard")
-    public Response addfundstocreditcard(@RequestBody CreditCard creditcard) {
-		System.out.println("in pay with " + creditcard);
-		boolean res=financialservice.AddFundsToCreditCard(creditcard);
-		Response response = new Response();
-		if (!res) {
-            response.setStatus(false);
-            response.setMessage("Write CreditCard details in acorrect way");
-            response.object=null;
-            return response;
-        }
-
-        response.setStatus(true);
-        response.setMessage("Add to credit card process is successful");
-        response.object=creditcard;
-        return response;
-	}
-	
-	
-	
+	}	
 }

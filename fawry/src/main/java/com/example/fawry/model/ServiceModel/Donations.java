@@ -21,13 +21,4 @@ public class Donations extends Services {
 		return this.serviceName;
 	}
 
-
-	/*@Override
-	public void getDiscountValue() {
-		
-		Service.finalDiscount+=0;
-	}
-	*/
-	
-
 }

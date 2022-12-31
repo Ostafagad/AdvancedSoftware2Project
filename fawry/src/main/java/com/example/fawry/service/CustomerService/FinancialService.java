@@ -21,7 +21,6 @@ import com.example.fawry.model.TransactionModel.Transaction;
 public class FinancialService {
 	public boolean PayWithWallet(Wallet payment) {
     	try {	
-    		
         		 if( DataBase.getdb1().validatepayment( payment)!=null) 
         		 {
         			 double dis=0;
@@ -51,17 +50,12 @@ public class FinancialService {
         			 }
         			 return true;
         		 }
-        			
-        		        	
-        	
-    	
     			return false;
     	}catch (Exception e) {
             System.out.println("Exception in pay as" + e.getMessage());
         }
     	return true;
     }
-
 	public boolean PayWithCreditCard(CreditCard payment) {
 		try {	
     		for (Services entry :  DataBase.getdb1().providersServices){
@@ -165,19 +159,7 @@ public class FinancialService {
             return false;
         }
     }
-	public boolean AddFundsToCreditCard(CreditCard creditcard) {
-    	try {	
-    		
-        			 creditcard.addfunds();
-                     creditcard.getcardnum();
-                     creditcard.getpass();
-        			 return true;
-        		 }
-    	catch (Exception e) {
-            System.out.println("Exception in pay as" + e.getMessage());
-            return false;
-        }
-    }
+	
 }
 	
 	

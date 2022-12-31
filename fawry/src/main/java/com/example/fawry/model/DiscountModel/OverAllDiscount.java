@@ -38,7 +38,4 @@ public class OverAllDiscount extends DiscountDecorator {
 		this.discountname=discountname;
 		
 	}
-
-
-	
 }

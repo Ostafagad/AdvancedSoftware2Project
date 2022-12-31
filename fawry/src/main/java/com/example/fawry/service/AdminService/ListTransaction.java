@@ -8,25 +8,6 @@ import com.example.fawry.model.TransactionModel.Transaction;
 @Service
 
 public class ListTransaction {
-
-	
-	/*	public ArrayList<Transaction> listPaymentTransactions() {
-	        try {
-	        	ArrayList<Transaction>d=new ArrayList <Transaction>();
-	        	for (Map.Entry<Integer,Transaction> entry : DataBase.getdb1().customerTransactions.entrySet()) {
-	          		 if(Objects.equals(entry.getValue().getType(), "Payment"))
-	          		 {
-	          			 d.add(entry.getValue());
-	          		 }
-	        	 return d;
-	        } 
-	        	}catch (Exception e) {
-	            System.out.println("Exception in getTransaction as" + e.getMessage());
-	        }
-	        return null;
-	    
-	}*/
-
 	public ArrayList<Transaction> listTransactions(String type) {
         try {
         	ArrayList<Transaction>d=new ArrayList <Transaction>();

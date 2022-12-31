@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class EtisalatCreator extends ProviderCreator {
 	@Override
-	public Provider creatProvider(String name,double amount,ArrayList <String>fields) {
-		return Etisalat.getEtisalat(name, amount,fields);
+	public Provider creatProvider(String name,ArrayList <String>fields) {
+		return Etisalat.getEtisalat(name,fields);
 	}
 
 }

@@ -19,23 +19,6 @@ public class SearchServiceController {
 	SearchService searchservice=new SearchService();
 	@GetMapping("/searchservice/{description}")
     public ArrayList<Services> searchService(@PathVariable("description") String description) {
-        return  searchservice.SearchServices(description);
-//        Response<Services> response = new Response<Services>();
-//        if (service == null ) {
-//          response.setStatus(false);
-//            response.setMessage("Service Not Found");
-//            response.object = null;
-//
-//          return response;
-//        }
-//        response.setStatus(true);
-//        response.setMessage("Search Service Successfully");
-//        response.object =  service;
-//
-//      return response;
-
-        
+        return  searchservice.SearchServices(description);   
     }
-	
-
 }

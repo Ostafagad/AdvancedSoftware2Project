@@ -5,10 +5,7 @@ public class InternetPaymentServices extends Services{
 		this.serviceProvider=serviceProvider;
 		this.serviceName=serviceName;
 	}
-	public InternetPaymentServices (String name) {
-		this.serviceName=name;
-	}
-	
+	public InternetPaymentServices() {}
 	public double cost() {
 		
 		return this.cost;
@@ -24,11 +21,4 @@ public class InternetPaymentServices extends Services{
 		return this.serviceName;
 	}
 
-	/*@Override
-	public void getDiscountValue() {
-		
-		Service.finalDiscount+=0;
-	}
-	*/
-	
 }

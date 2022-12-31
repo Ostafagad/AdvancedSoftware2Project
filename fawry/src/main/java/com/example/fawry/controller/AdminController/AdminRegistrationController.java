@@ -17,22 +17,6 @@ import com.example.fawry.service.AdminService.AdminRegistration;
 public class AdminRegistrationController {
 	@Autowired
 	AdminRegistration adminRegistration=new AdminRegistration();  
-//	@PostMapping("/signup")
-//    public Response signup(@RequestBody Account a) {
-//        System.out.println("In Add Admin" + a);
-//        boolean res = adminRegistration.SignUP(a);
-//        Response response = new Response();
-//        if (!res) {
-//            response.setStatus(false);
-//            response.setMessage("Admin UserName or Email Already Exists");
-//            return response;
-//        }
-//
-//        response.setStatus(true);
-//        response.setMessage("Admin Account created successfully");
-//        response.object=a;
-//        return response;
-//    }
  @GetMapping("/signin/{pass}/{name}")
     public Response signin(@PathVariable("pass") String pass,@PathVariable("name") String name) {
         boolean admin = adminRegistration.SignIn(name,pass);

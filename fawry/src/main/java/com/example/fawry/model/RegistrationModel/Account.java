@@ -42,7 +42,4 @@ public class Account {
     public String toString() {
 		return user_name + "::" + email + "::" + password;
 	}
-
-
-
 }

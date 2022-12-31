@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public abstract class Provider {
 	protected String name;
 	protected ArrayList <String>fields=new ArrayList<String>();
-	protected double amount;
+	
 	public Provider() {
 		
 	}
@@ -16,12 +16,5 @@ public abstract class Provider {
 	
 	public String getName() {
 		return this.name;
-	}
-	public void setAmount(double amount) {
-		this.amount=amount;
-	}
-	
-	public double getAmount() {
-		return this.amount;
 	}
 }

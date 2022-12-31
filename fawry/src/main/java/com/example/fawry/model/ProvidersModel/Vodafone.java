@@ -10,17 +10,17 @@ public class Vodafone extends Provider {
 	private static Vodafone v=null;
 	private Vodafone() {	
 	}
-	private Vodafone(String name,double amount,ArrayList <String>fields) {
+	private Vodafone(String name,ArrayList <String>fields) {
 		this.name=name;
-		this.amount=amount;
+		
 		this.fields=fields;
 		
 	}
 	
-	public static Vodafone getvodafone(String name,double amount,ArrayList <String>fields)
+	public static Vodafone getvodafone(String name,ArrayList <String>fields)
 	{
 		if(v==null)
-			v=new Vodafone( name, amount,fields);
+			v=new Vodafone( name,fields);
 		return v;
 	}
 }

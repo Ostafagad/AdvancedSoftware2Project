@@ -6,12 +6,7 @@ public class mobileRechargeService extends Services {
 		this.serviceName=serviceName;
 	}
 	public mobileRechargeService () {}
-	public mobileRechargeService (String description) {
-		
-		this.serviceName=description;
-		
-		
-	}
+	
 	@Override
 	public double cost() {
 		
@@ -30,12 +25,4 @@ public class mobileRechargeService extends Services {
 	public String getserviceName() {
 		return this.serviceName;
 	}
-	
-/*
-	@Override
-	public void getDiscountValue() {
-		
-		Services.finalDiscount+=0;
-	}
-	*/
 }

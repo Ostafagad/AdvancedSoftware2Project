@@ -9,20 +9,13 @@ import com.example.fawry.model.ServiceModel.Services;
 public class AddService {
 	public boolean addService(Services ser) {
 		try {
-			
-			
 			for (Services entry :  DataBase.getdb1().providersServices){
        		 if(entry.getserviceName().toLowerCase().equals(ser.getserviceName().toLowerCase())&&
        				 entry.getServiceProvider().toLowerCase().equals(ser.getServiceProvider().toLowerCase())) {
-       			 return false;
-       			 
+       			 return false; 
        		 }
-			
 			}
-		     
 		        DataBase.getdb1().providersServices.add(ser);
-		      
-		      
 		    }catch (Exception e) {
 		            System.out.println("Exception in provider as" + e.getMessage());
 		            return false;

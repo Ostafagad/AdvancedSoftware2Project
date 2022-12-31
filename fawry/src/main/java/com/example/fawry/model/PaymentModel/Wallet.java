@@ -8,14 +8,10 @@ public class Wallet implements Payment {
 	public String serviceName;
 	private String providerName;
 	private int transactionId;
-	
-
 
 	@Override
 	public void pay(double amount) {
-		
 		balance-=amount;
-		//Form.handler=true;
 	}
 	public static void addfunds(double d)
 	{
@@ -40,8 +36,7 @@ public class Wallet implements Payment {
 	}
 	public void setServiceName(String serviceName) {
 		this.serviceName = serviceName;
-	}
-//	
+	}	
 	public String getProviderName() {
 		return providerName;
 	}
@@ -54,6 +49,4 @@ public class Wallet implements Payment {
 	public void setTransactionId(int transactionId) {
 		this.transactionId = transactionId;
 	}
-
-
 }

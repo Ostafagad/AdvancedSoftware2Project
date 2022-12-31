@@ -10,10 +10,8 @@ public class QuarterReceipt extends LandlineServices {
 		this.cost=cost*3;
 		
 	}
-
 	@Override
 	public void setCost(double cost) {
 		this.cost=cost*3;
 	}
-
 }

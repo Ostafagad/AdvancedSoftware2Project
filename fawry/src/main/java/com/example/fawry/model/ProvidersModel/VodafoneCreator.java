@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class VodafoneCreator extends ProviderCreator {
 
 	@Override
-	public Provider creatProvider(String name,double amount,ArrayList <String>fields) {
-		return Vodafone.getvodafone( name, amount,fields);
+	public Provider creatProvider(String name,ArrayList <String>fields) {
+		return Vodafone.getvodafone( name,fields);
 	}
 
 }

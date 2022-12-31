@@ -35,14 +35,19 @@ public class RefundController {
 	@GetMapping("/CheckRefund/{id}")
     public  Response  CheckRefund(@PathVariable ("id") int transactionId) {
 		System.out.println("in ask for refund " + transactionId);
-		boolean res=refund.CheckRefund(transactionId);
+		int res=refund.CheckRefund(transactionId);
 		Response response = new Response();
-		if (!res) {
+		if (res==0) {
             response.setStatus(false);
             response.setMessage("Your refund request has been rejected");
             return response;
         }
-
+		else if(res==-1) {
+			 response.setStatus(false);
+	            response.setMessage("Your refund request is in waitaing list");
+	            return response;
+		}
+		
         response.setStatus(true);
         response.setMessage("Your refund request has been accepted");
         return response;

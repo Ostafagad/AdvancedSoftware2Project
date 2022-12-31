@@ -2,7 +2,7 @@ package com.example.fawry.model.PaymentModel;
 
 
 public class Cashe implements Payment {
-	private double cashValue;
+	private static double cashValue=100000.0;
 	public double cost;
 	public String serviceName;
 	private String providerName;
@@ -16,12 +16,9 @@ public class Cashe implements Payment {
 	@Override
 	public void pay(double amount) {
 		cashValue-=amount;
-		//Form.handler=true;
 	}
-	
-
-	public double getCashValue() {
-		return this.cashValue;
+	public static double getCashValue() {
+		return cashValue;
 	}
 	public void setCashValue(double cash) {
 		this.cashValue=cash;

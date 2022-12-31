@@ -22,8 +22,6 @@ public class CreditCard implements Payment {
 	@Override
 	public void pay(double amount) {
 		cardBalance-=amount;
-		//Form.handler=true;
-		
 	}
     public void AddFundsToWallet(double amount) {
     	

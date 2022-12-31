@@ -6,5 +6,5 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class ProviderCreator {
 	
-	public abstract Provider creatProvider(String name,double amount,ArrayList <String>fields);
+	public abstract Provider creatProvider(String name,ArrayList <String>fields);
 }

@@ -16,10 +16,9 @@ import com.example.fawry.model.TransactionModel.Transaction;
 public class RefundRequestService {
 	public boolean acceptRefund(int id) {
 		try {
-		
    		 if(DataBase.getdb1().validateRefund( id))
    		 {
-   			DataBase.getdb1().refunds.get(id).setRefundStatus(true);
+   			DataBase.getdb1().refunds.get(id).setRefundStatus("accepted");
    			 Wallet.addfunds(DataBase.getdb1().refunds.get(id).getamount());
    			 DataBase.getdb1().refunds.remove(id);
    			 return true;
@@ -28,18 +27,14 @@ public class RefundRequestService {
 	}catch (Exception e) {
        System.out.println("Exception in pay as" + e.getMessage());
    }
-	
-
 	return true;
 	}
-	
-	
 	public boolean rejectRefund(int id) {
 		try {
 		
    		 if(DataBase.getdb1().validateRefund( id))
    		 {
-   			DataBase.getdb1().refunds.get(id).setRefundStatus(false);
+   			DataBase.getdb1().refunds.get(id).setRefundStatus("rejected");
    			DataBase.getdb1().refunds.remove(id);
    			 return true;
    		 }
@@ -48,10 +43,6 @@ public class RefundRequestService {
 	}catch (Exception e) {
        System.out.println("Exception in pay as" + e.getMessage());
    }
-	
-
 	return true;
 	}
-	
-	
 }

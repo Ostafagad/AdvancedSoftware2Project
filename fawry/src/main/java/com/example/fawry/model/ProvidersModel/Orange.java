@@ -9,15 +9,15 @@ public class Orange extends Provider {
 private static Orange v=null;
 	private Orange() {	
 	}
-	private Orange(String name,double amount,ArrayList <String>fields) {
+	private Orange(String name,ArrayList <String>fields) {
 		this.name=name;
-		this.amount=amount;
+		
 		this.fields=fields;
 	}
-	public static Orange getOrange(String name,double amount,ArrayList <String>fields)
+	public static Orange getOrange(String name,ArrayList <String>fields)
 	{
 		if(v==null)
-			v=new Orange(name,amount,fields);
+			v=new Orange(name,fields);
 		return v;
 	}
 }

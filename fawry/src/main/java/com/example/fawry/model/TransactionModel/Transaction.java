@@ -6,13 +6,13 @@ public class Transaction {
     private String type;
     private double amount;
     public static int transid=0;
-    private boolean refundStatus;
+    private String refundStatus;
 	public Transaction(String sername,double amount,String type) {
 		Transaction.transid++;
 		this.type=type;
 		this.sername=sername;
 		this.amount=amount;
-		this.refundStatus=false;
+		this.refundStatus="Waiting";
 	}
 	public static int gettranid() {
 		return transid;
@@ -36,10 +36,10 @@ public class Transaction {
 	public static int getTransactionId() {
 		return Transaction.transid;
 	}
-	public boolean isRefundStatus() {
+	public String isRefundStatus() {
 		return refundStatus;
 	}
-	public void setRefundStatus(boolean refundStatus) {
+	public void setRefundStatus(String refundStatus) {
 		this.refundStatus = refundStatus;
 	}
 }

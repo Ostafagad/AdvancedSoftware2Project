@@ -73,12 +73,12 @@ public class ProviderController {
       Response response = new Response();
       if (!res) {
           response.setStatus(false);
-          response.setMessage("Etisalat Provider Already Exists");
+          response.setMessage("We Provider Already Exists");
           return response;
       }
 
       response.setStatus(true);
-      response.setMessage("Etisalat Provider created successfully");
+      response.setMessage("We Provider created successfully");
       return response;
   }
 }
