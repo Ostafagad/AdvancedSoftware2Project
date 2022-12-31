@@ -6,6 +6,13 @@ public class Cashe implements Payment {
 	public double cost;
 	public String serviceName;
 	private String providerName;
+	private int transactionId;
+	public int getTransactionId() {
+		return transactionId;
+	}
+	public void setTransactionId(int transactionId) {
+		this.transactionId = transactionId;
+	}
 	@Override
 	public void pay(double amount) {
 		cashValue-=amount;

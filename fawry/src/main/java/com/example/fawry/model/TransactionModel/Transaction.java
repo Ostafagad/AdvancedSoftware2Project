@@ -7,12 +7,12 @@ public class Transaction {
     private double amount;
     public static int transid=0;
     private boolean refundStatus;
-	public Transaction(String sername,double amount,String type,boolean refundStatus) {
+	public Transaction(String sername,double amount,String type) {
 		Transaction.transid++;
 		this.type=type;
 		this.sername=sername;
 		this.amount=amount;
-		this.refundStatus=refundStatus;
+		this.refundStatus=false;
 	}
 	public static int gettranid() {
 		return transid;

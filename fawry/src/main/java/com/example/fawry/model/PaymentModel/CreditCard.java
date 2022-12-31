@@ -1,5 +1,6 @@
 package com.example.fawry.model.PaymentModel;
 
+import com.example.fawry.model.TransactionModel.Transaction;
 
 public class CreditCard implements Payment {
 	private String cardnumber;
@@ -9,7 +10,15 @@ public class CreditCard implements Payment {
 	public String serviceName;
 	private String providerName;
 	private static double funds=0.0;
-	private static double walletbalance;
+	private static double walletbalance;	
+	private int transactionId;
+	public int getTransactionId() {
+		return transactionId;
+	}
+	public void setTransactionId(int transactionId) {
+		this.transactionId = transactionId;
+	}
+
 	@Override
 	public void pay(double amount) {
 		cardBalance-=amount;
@@ -75,5 +84,7 @@ public class CreditCard implements Payment {
 	public void setProviderName(String providerName) {
 		this.providerName = providerName;
 	}
+	
+	
 	
 }
