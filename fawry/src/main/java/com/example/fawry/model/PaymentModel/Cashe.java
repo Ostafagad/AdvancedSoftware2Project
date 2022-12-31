@@ -5,6 +5,7 @@ public class Cashe implements Payment {
 	private double cashValue;
 	public double cost;
 	public String serviceName;
+	private String providerName;
 	@Override
 	public void pay(double amount) {
 		cashValue-=amount;
@@ -29,5 +30,15 @@ public class Cashe implements Payment {
 	}
 	public void setServiceName(String serviceName) {
 		this.serviceName = serviceName;
+	}
+
+
+	public String getProviderName() {
+		return providerName;
+	}
+
+
+	public void setProviderName(String providerName) {
+		this.providerName = providerName;
 	}
 }

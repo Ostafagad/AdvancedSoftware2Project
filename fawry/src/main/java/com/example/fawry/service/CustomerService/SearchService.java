@@ -31,8 +31,7 @@ public class SearchService {
 		        try {
 		        	ArrayList<Services> services=new ArrayList<Services>();
 		        	for (Services entry :  DataBase.getdb1().providersServices) {
-//		        		if(DataBase.getdb1().providersServices.isEmpty())
-//		        			return null;
+
 		        		if(entry.getserviceName().toLowerCase().equals( description.toLowerCase()) )
 		        			services.add(entry);	        	
 		        	}

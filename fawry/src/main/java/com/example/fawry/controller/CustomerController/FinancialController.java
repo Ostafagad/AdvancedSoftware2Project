@@ -33,7 +33,7 @@ public class FinancialController {
 		Response response = new Response();
 		if (!res) {
             response.setStatus(false);
-            response.setMessage("Write service name in acorrect way");
+            response.setMessage("Incorrect service name or provider name");
             response.object=null;
             return response;
         }
@@ -51,7 +51,7 @@ public class FinancialController {
 		Response response = new Response();
 		if (!res) {
             response.setStatus(false);
-            response.setMessage("Write service name in acorrect way");
+            response.setMessage("Incorrect service name or provider name");
             response.object=null;
             return response;
         }
@@ -68,7 +68,7 @@ public class FinancialController {
 		Response response = new Response();
 		if (!res) {
             response.setStatus(false);
-            response.setMessage("Write service name in acorrect way");
+            response.setMessage("Incorrect service name or provider name");
             response.object=null;
             return response;
         }

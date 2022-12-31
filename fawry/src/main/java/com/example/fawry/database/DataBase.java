@@ -34,12 +34,9 @@ public class DataBase {
     public static Map<String, Account> cust_accounts = new HashMap<String, Account>();
     public static Map<Integer,Transaction>refunds=new HashMap<Integer,Transaction>();
     public static Map<Integer,Transaction>customerTransactions=new HashMap<Integer,Transaction>();
-    public static Map<String, Services> services = new HashMap<String, Services>();
-//    public static Map<String, Services> orangeServices = new HashMap<String, Services>();
-//    public static Map<String, Services> weServices = new HashMap<String, Services>();
-//    public static Map<String, Services> etisalatServices = new HashMap<String, Services>();
-//    public static Map<String, Services> vodafoneServices = new HashMap<String, Services>();
-    public static Vector<Services> providersServices=new Vector<>();
+    //public static Map<String, Services> services = new HashMap<String, Services>();
+
+    public  Vector<Services> providersServices=new Vector<>();
        private DataBase()
     {
     	   Services service1=new InternetPaymentServices("InternetPayment");
@@ -56,11 +53,11 @@ public class DataBase {
     	   Services etisalatRechargeservice2=new  mobileRechargeService("etisalat","mobileRecharge");
     	   Services orangeRechargeservice2=new  mobileRechargeService("orange","mobileRecharge");
     	   
-    	   services.put("Donations", service5);
-    	   services.put("InternetPayment", service1);
-    	   services.put(" mobileRecharge", service2);
-    	   services.put("QuarterReceipt", service3);
-    	   services.put("MonthlyReceipt", service4);
+//    	   services.put("Donations", service5);
+//    	   services.put("InternetPayment", service1);
+//    	   services.put(" mobileRecharge", service2);
+//    	   services.put("QuarterReceipt", service3);
+//    	   services.put("MonthlyReceipt", service4);
     	   providersServices.add(vodafoneinternetService);
     	   providersServices.add(weinternetservice);
     	   providersServices.add(etisalatinternetervice);

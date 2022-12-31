@@ -7,6 +7,7 @@ public class CreditCard implements Payment {
 	private static double cardBalance=100000.0;
 	public double cost;
 	public String serviceName;
+	private String providerName;
 	private static double funds=0.0;
 	private static double walletbalance;
 	@Override
@@ -67,6 +68,12 @@ public class CreditCard implements Payment {
 	}
 	public void setFunds(double funds) {
 		this.funds = funds;
+	}
+	public String getProviderName() {
+		return providerName;
+	}
+	public void setProviderName(String providerName) {
+		this.providerName = providerName;
 	}
 	
 }
