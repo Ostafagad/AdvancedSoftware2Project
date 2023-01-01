@@ -27,7 +27,7 @@ public class CreditCard implements Payment {
     	
     	Wallet.addfunds(amount);
     	cardBalance-=amount;
-    	walletbalance=Wallet.getbalance();
+    	walletbalance=Wallet.getbalance1();
     }
     public double getwalletbalance()
 	{

@@ -1,5 +1,7 @@
 package com.example.fawry.model.TransactionModel;
 
+import com.example.fawry.model.RegistrationModel.Account;
+
 public class Transaction {
     private int custid;
     private String sername;
@@ -7,12 +9,13 @@ public class Transaction {
     private double amount;
     public static int transid=0;
     private String refundStatus;
-	public Transaction(String sername,double amount,String type) {
+	public Transaction(String sername,double amount,String type,int id) {
 		Transaction.transid++;
 		this.type=type;
 		this.sername=sername;
 		this.amount=amount;
 		this.refundStatus="Waiting";
+		this.custid= id;
 	}
 	public static int gettranid() {
 		return transid;

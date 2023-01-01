@@ -12,12 +12,12 @@ import com.example.fawry.model.TransactionModel.Transaction;
 
 @Service
 public class Refund {
-public Transaction askForRefund(int transactionId) {
+public Transaction askForRefund(int transactionId,int id) {
 		try {	
         		 if(DataBase.getdb1().validateTransaction(transactionId))
         		 {
         			 DataBase.refunds.put(transactionId,DataBase.getdb1().customerTransactions.get(transactionId));
-        			 Transaction t=new Transaction("AskforRefund",DataBase.getdb1().customerTransactions.get(transactionId).getamount(),"refund");
+        			 Transaction t=new Transaction("AskforRefund",DataBase.getdb1().customerTransactions.get(transactionId).getamount(),"refund",id);
         			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 return DataBase.getdb1().customerTransactions.get(transactionId);
         		 }		

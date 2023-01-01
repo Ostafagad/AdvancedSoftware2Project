@@ -42,8 +42,9 @@ public class FinancialController {
 	            response.object=null;
 	            return response;
 		}
+		int id= DataBase.getdb1().getcustid(a)+1;
 	
-		boolean res=financialservice.PayWithWallet(wallet);
+		boolean res=financialservice.PayWithWallet(wallet,id);
 		if (!res) {
             response.setStatus(false);
             response.setMessage("Incorrect service name or provider name");
@@ -69,7 +70,9 @@ public class FinancialController {
 	            response.object=null;
 	            return response;
 		}
-		boolean res=financialservice.PayWithCreditCard(creditcard);
+		int id= DataBase.getdb1().getcustid(a)+1;
+
+		boolean res=financialservice.PayWithCreditCard(creditcard,id);
 		
 		if (!res) {
             response.setStatus(false);
@@ -95,7 +98,9 @@ public class FinancialController {
 	            response.object=null;
 	            return response;
 		}
-		boolean res=financialservice.PayWithCashe(cashe);
+		int id= DataBase.getdb1().getcustid(a)+1;
+
+		boolean res=financialservice.PayWithCashe(cashe,id);
 		if (!res) {
             response.setStatus(false);
             response.setMessage("Incorrect service name or provider name");
@@ -120,7 +125,9 @@ public class FinancialController {
 	            response.object=null;
 	            return response;
 		}
-		boolean res=financialservice.AddFundsToWallet(card);
+		int id= DataBase.getdb1().getcustid(a)+1;
+
+		boolean res=financialservice.AddFundsToWallet(card,id);
 		if (!res) {
             response.setStatus(false);
             response.setMessage("Write Wallet details in acorrect way");

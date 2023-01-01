@@ -15,8 +15,11 @@ public class CustomerRegsration {
 	public Boolean SignUP(Account a) {
         try {
         	if( DataBase.getdb1().ValidateSignUp(a)) {
-			       DataBase.getdb1().cust_accounts.put(a.getEmail().toLowerCase(), a);
-			       Account acc=new Account();
+			       DataBase.getdb1().cust_accounts.put(Account.custid++, a);
+			   
+			    
+			       
+			    
 			       return true;
         	}
         	else 

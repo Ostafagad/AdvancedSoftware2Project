@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.fawry.database.DataBase;
 import com.example.fawry.model.Response;
 import com.example.fawry.model.RegistrationModel.Account;
 import com.example.fawry.model.TransactionModel.Transaction;
@@ -30,7 +31,9 @@ public class RefundController {
 	            response.object=null;
 	            return response;
 		}
-		Transaction res=refund.askForRefund(transactionId);
+		int id= DataBase.getdb1().getcustid(a)+1;
+
+		Transaction res=refund.askForRefund(transactionId,id);
 		if (res==null) {
             response.setStatus(false);
             response.setMessage("Wrong Transaction ID.Try to rewrite it");

@@ -33,7 +33,7 @@ public class DataBase {
     private static DataBase database=null;
     public static Map<String, Provider> providers = new HashMap<String, Provider>();
     public static Vector<DiscountDecorator> discounts=new Vector<>();
-    public static Map<String, Account> cust_accounts = new HashMap<String, Account>();
+    public static Map<Integer, Account> cust_accounts = new HashMap<Integer , Account>();
     public static Map<Integer,Transaction>refunds=new HashMap<Integer,Transaction>();
     public static Map<Integer,Transaction>customerTransactions=new HashMap<Integer,Transaction>();
     public  Vector<Services> providersServices=new Vector<>();
@@ -42,7 +42,7 @@ public class DataBase {
 		if(DataBase.getdb1().cust_accounts.isEmpty()) {
 			return true;
     	}
-    	for (Map.Entry<String, Account> entry : DataBase.getdb1().cust_accounts.entrySet()) {
+    	for (Map.Entry<Integer, Account> entry : DataBase.getdb1().cust_accounts.entrySet()) {
     		 if(Objects.equals(entry.getValue().getUser_name(),a.getUser_name()) || Objects.equals(entry.getValue().getEmail(), a.getEmail()) )
     			return false;
     		        	
@@ -52,7 +52,7 @@ public class DataBase {
 	}
     public Account ValidateSignIn(String em,String pass)
     {
-    	for (Map.Entry<String, Account> entry : DataBase.getdb1().cust_accounts.entrySet()) {
+    	for (Map.Entry<Integer, Account> entry : DataBase.getdb1().cust_accounts.entrySet()) {
     		if(DataBase.getdb1().cust_accounts.isEmpty())
     			return null;
     		else if(Objects.equals(entry.getValue().getPassword(), pass) && Objects.equals(entry.getValue().getEmail(), em) )
@@ -125,7 +125,16 @@ public class DataBase {
 		return null;
 		
 	}
-
+public int getcustid(Account a)
+{
+	
+	for (Map.Entry<Integer, Account> entry : DataBase.getdb1().cust_accounts.entrySet()) {
+		 if(Objects.equals(entry.getValue().getUser_name(),a.getUser_name()) || Objects.equals(entry.getValue().getEmail(), a.getEmail()) )
+			return entry.getKey();
+		        	
+	}
+	return -1;
+}
     public void setAdminUserName(String name) {
 		this.adminUserName=name;
 	}

@@ -1,5 +1,6 @@
 package com.example.fawry.model.RegistrationModel;
 
+import com.example.fawry.model.PaymentModel.Wallet;
 import com.example.fawry.model.TransactionModel.Transaction;
 
 public class Account {
@@ -7,9 +8,11 @@ public class Account {
     private String password;
     private String email;
     public static int custid=0;
+
+    
      public Account()
      {
-    	 Account.custid++;
+    	   
      }
 
     public void setEmail(String email) {
@@ -38,6 +41,9 @@ public class Account {
     }
     public static int getcustId() {
 		return Account.custid;
+	}
+    public  int getcusId() {
+		return custid;
 	}
     public String toString() {
 		return user_name + "::" + email + "::" + password;

@@ -18,8 +18,8 @@ public class Wallet implements Payment {
 		
 		balance+=d;
 	}
-	public static double getbalance() {
-		return balance;
+	public static double getbalance1() {
+		return Wallet.balance;
 	}
 	
 	public void setBalance(double balance) {
@@ -42,6 +42,9 @@ public class Wallet implements Payment {
 	}
 	public void setProviderName(String providerName) {
 		this.providerName = providerName;
+	}
+	public double getbalance() {
+		return balance;
 	}
 	public int getTransactionId() {
 		return transactionId;
