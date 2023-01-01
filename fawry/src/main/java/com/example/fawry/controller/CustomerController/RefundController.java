@@ -7,18 +7,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.fawry.model.Response;
+import com.example.fawry.model.RegistrationModel.Account;
 import com.example.fawry.model.TransactionModel.Transaction;
+import com.example.fawry.service.CustomerService.CustomerRegsration;
 import com.example.fawry.service.CustomerService.Refund;
 @RestController
 @RequestMapping("/RefundController")
 public class RefundController {
 	@Autowired
 	Refund refund=new Refund();
-	@GetMapping("/askForRefund/{id}")
-    public  Response <Transaction> askForRefund(@PathVariable ("id") int transactionId) {
+	CustomerRegsration customerregistration=new CustomerRegsration();
+
+	@GetMapping("/askForRefund/{id}/{email}/{pass}")
+    public  Response <Transaction> askForRefund(@PathVariable ("id") int transactionId,@PathVariable ("pass") String pass,@PathVariable ("email") String email) {
 		System.out.println("in ask for refund " + transactionId);
-		Transaction res=refund.askForRefund(transactionId);
 		Response<Transaction> response = new Response<Transaction>();
+		Account a=customerregistration.SignIn(email, pass);
+		if(a==null)
+		{
+			 response.setStatus(false);
+	            response.setMessage("invalid email or username");
+	            response.object=null;
+	            return response;
+		}
+		Transaction res=refund.askForRefund(transactionId);
 		if (res==null) {
             response.setStatus(false);
             response.setMessage("Wrong Transaction ID.Try to rewrite it");
@@ -32,11 +44,19 @@ public class RefundController {
         return response;
 	}
 	
-	@GetMapping("/CheckRefund/{id}")
-    public  Response  CheckRefund(@PathVariable ("id") int transactionId) {
+	@GetMapping("/CheckRefund/{id}/{email}/{pass}")
+    public  Response  CheckRefund(@PathVariable ("id") int transactionId,@PathVariable ("pass") String pass,@PathVariable ("email") String email) {
 		System.out.println("in ask for refund " + transactionId);
-		int res=refund.CheckRefund(transactionId);
 		Response response = new Response();
+		Account a=customerregistration.SignIn(email, pass);
+		if(a==null)
+		{
+			 response.setStatus(false);
+	            response.setMessage("invalid email or username");
+	            response.object=null;
+	            return response;
+		}
+		int res=refund.CheckRefund(transactionId);
 		if (res==0) {
             response.setStatus(false);
             response.setMessage("Your refund request has been rejected");

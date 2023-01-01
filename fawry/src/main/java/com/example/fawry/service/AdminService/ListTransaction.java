@@ -48,4 +48,14 @@ public class ListTransaction {
         return null;
     
 }
+	public ArrayList<Transaction> listallTransactions() {
+		ArrayList<Transaction>d=new ArrayList <Transaction>();
+       	
+        	for (Map.Entry<Integer,Transaction> entry : DataBase.getdb1().customerTransactions.entrySet()) 
+          		d.add(entry.getValue());
+          		 
+        	         
+        	return d;
+        	 
+	}
 }

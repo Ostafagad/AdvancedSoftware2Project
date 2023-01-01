@@ -19,6 +19,8 @@ import com.example.fawry.model.Response;
 import com.example.fawry.model.PaymentModel.Cashe;
 import com.example.fawry.model.PaymentModel.CreditCard;
 import com.example.fawry.model.PaymentModel.Wallet;
+import com.example.fawry.model.RegistrationModel.Account;
+import com.example.fawry.service.CustomerService.CustomerRegsration;
 import com.example.fawry.service.CustomerService.FinancialService;
 import com.example.fawry.service.CustomerService.SearchService;
 @RestController
@@ -26,11 +28,22 @@ import com.example.fawry.service.CustomerService.SearchService;
 public class FinancialController {
 	@Autowired
 	FinancialService financialservice=new FinancialService();
-	@PostMapping("/paywallet")
-    public Response PayWithWallet(@RequestBody Wallet wallet) {
+	CustomerRegsration customerregistration=new CustomerRegsration();
+
+	@PostMapping("/paywallet/{email}/{pass}")
+    public Response PayWithWallet(@RequestBody Wallet wallet,@PathVariable ("pass") String pass,@PathVariable ("email") String email ) {
 		System.out.println("in pay" + wallet);
-		boolean res=financialservice.PayWithWallet(wallet);
 		Response response = new Response();
+		Account a=customerregistration.SignIn(email, pass);
+		if(a==null)
+		{
+			 response.setStatus(false);
+	            response.setMessage("invalid email or username");
+	            response.object=null;
+	            return response;
+		}
+	
+		boolean res=financialservice.PayWithWallet(wallet);
 		if (!res) {
             response.setStatus(false);
             response.setMessage("Incorrect service name or provider name");
@@ -44,11 +57,20 @@ public class FinancialController {
         return response;
 	}
 	
-	@PostMapping("/paycreditcard")
-    public Response paywithcreditcard(@RequestBody CreditCard creditcard) {
+	@PostMapping("/paycreditcard/{email}/{pass}")
+    public Response paywithcreditcard(@RequestBody CreditCard creditcard,@PathVariable ("pass") String pass,@PathVariable ("email") String email ) {
 		System.out.println("in pay with " + creditcard);
-		boolean res=financialservice.PayWithCreditCard(creditcard);
 		Response response = new Response();
+		Account a=customerregistration.SignIn(email, pass);
+		if(a==null)
+		{
+			 response.setStatus(false);
+	            response.setMessage("invalid email or username");
+	            response.object=null;
+	            return response;
+		}
+		boolean res=financialservice.PayWithCreditCard(creditcard);
+		
 		if (!res) {
             response.setStatus(false);
             response.setMessage("Incorrect service name or provider name");
@@ -61,11 +83,19 @@ public class FinancialController {
         response.object=creditcard;
         return response;
 	}
-	@PostMapping("/paycashe")
-    public Response paywithcreditcard(@RequestBody Cashe cashe) {
+	@PostMapping("/paycashe/{email}/{pass}")
+    public Response paywithcreditcard(@RequestBody Cashe cashe,@PathVariable ("pass") String pass,@PathVariable ("email") String email) {
 		System.out.println("in pay with " + cashe);
-		boolean res=financialservice.PayWithCashe(cashe);
 		Response response = new Response();
+		Account a=customerregistration.SignIn(email, pass);
+		if(a==null)
+		{
+			 response.setStatus(false);
+	            response.setMessage("invalid email or username");
+	            response.object=null;
+	            return response;
+		}
+		boolean res=financialservice.PayWithCashe(cashe);
 		if (!res) {
             response.setStatus(false);
             response.setMessage("Incorrect service name or provider name");
@@ -78,11 +108,19 @@ public class FinancialController {
         response.object=cashe;
         return response;
 	}
-	@PostMapping("/addfundstowallet")
-    public Response addfundstowallet(@RequestBody CreditCard card) {
+	@PostMapping("/addfundstowallet/{email}/{pass}")
+    public Response addfundstowallet(@RequestBody CreditCard card,@PathVariable ("pass") String pass,@PathVariable ("email") String email) {
 		System.out.println("in pay with " + card);
-		boolean res=financialservice.AddFundsToWallet(card);
 		Response response = new Response();
+		Account a=customerregistration.SignIn(email, pass);
+		if(a==null)
+		{
+			 response.setStatus(false);
+	            response.setMessage("invalid email or username");
+	            response.object=null;
+	            return response;
+		}
+		boolean res=financialservice.AddFundsToWallet(card);
 		if (!res) {
             response.setStatus(false);
             response.setMessage("Write Wallet details in acorrect way");

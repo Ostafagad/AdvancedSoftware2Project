@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.fawry.model.Response;
+import com.example.fawry.service.AdminService.AdminRegistration;
 import com.example.fawry.service.AdminService.RefundRequestService;
 
 @RestController
@@ -15,12 +16,23 @@ import com.example.fawry.service.AdminService.RefundRequestService;
 public class RefundRequestController {
 	 @Autowired
 	 RefundRequestService refundRequestService=new RefundRequestService();
-	@GetMapping("/acceptRefund/{id}")
-    public Response acceptRefund(@PathVariable ("id") int id ) {
+		AdminRegistration adminRegistration=new AdminRegistration();  
+
+	@GetMapping("/acceptRefund/{id}/{name}/{pass}")
+    public Response acceptRefund(@PathVariable ("id") int id,@PathVariable ("pass") String pass,@PathVariable ("name") String name ) {
      
         System.out.println("in add OverAllDiscount");
-        boolean res = refundRequestService.acceptRefund(id);
         Response response = new Response();
+        boolean valid=adminRegistration.SignIn(name, pass);
+		if(!valid)
+		{
+			 response.setStatus(false);
+	            response.setMessage("invalid password or username");
+	            response.object=null;
+	            return response;
+		}
+
+        boolean res = refundRequestService.acceptRefund(id);
         if (!res) {
             response.setStatus(false);
             response.setMessage("Incorrect transaction ID");
@@ -32,12 +44,21 @@ public class RefundRequestController {
         return response;
     }
 	
-	@GetMapping("/rejectRefund/{id}")
-    public Response rejectRefund(@PathVariable ("id") int id ) {
+	@GetMapping("/rejectRefund/{id}/{name}/{pass}")
+    public Response rejectRefund(@PathVariable ("id") int id ,@PathVariable ("pass") String pass,@PathVariable ("name") String name) {
      
         System.out.println("in add OverAllDiscount");
-        boolean res = refundRequestService.rejectRefund(id);
         Response response = new Response();
+        boolean valid=adminRegistration.SignIn(name, pass);
+		if(!valid)
+		{
+			 response.setStatus(false);
+	            response.setMessage("invalid password or username");
+	            response.object=null;
+	            return response;
+		}
+
+        boolean res = refundRequestService.rejectRefund(id);
         if (!res) {
             response.setStatus(false);
             response.setMessage("Incorrect transaction ID");

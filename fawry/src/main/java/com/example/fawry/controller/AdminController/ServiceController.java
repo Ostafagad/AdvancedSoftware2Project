@@ -1,6 +1,7 @@
 package com.example.fawry.controller.AdminController;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,17 +15,29 @@ import com.example.fawry.model.ServiceModel.MonthlyReceipt;
 import com.example.fawry.model.ServiceModel.QuarterReceipt;
 import com.example.fawry.model.ServiceModel.mobileRechargeService;
 import com.example.fawry.service.AdminService.AddService;
+import com.example.fawry.service.AdminService.AdminRegistration;
 @RestController
 @RequestMapping("/ServiceController")
 public class ServiceController {
 	@Autowired
 	AddService addService=new AddService();  
-	 @PostMapping("/addmobileRechargeService")
-     public Response addService(@RequestBody mobileRechargeService service) {
+	AdminRegistration adminRegistration=new AdminRegistration();  
+
+	 @PostMapping("/addmobileRechargeService/{name}/{pass}")
+     public Response addService(@RequestBody mobileRechargeService service,@PathVariable ("pass") String pass,@PathVariable ("name") String name) {
    
           System.out.println("in add service" + service);
+          Response response = new Response();
+          boolean valid=adminRegistration.SignIn(name, pass);
+  		if(!valid)
+  		{
+  			 response.setStatus(false);
+  	            response.setMessage("invalid password or username");
+  	            response.object=null;
+  	            return response;
+  		}
+
           boolean res = addService.addService(service);
-         Response response = new Response();
          if (!res) {
               response.setStatus(false);
               response.setMessage("Service Already Exists");
@@ -35,12 +48,21 @@ public class ServiceController {
           response.setMessage("Service added successfully");
           return response;
       }
-  @PostMapping("/addInternetPaymentServices")
-  public Response addService(@RequestBody InternetPaymentServices service) {
+  @PostMapping("/addInternetPaymentServices/{name}/{pass}")
+  public Response addService(@RequestBody InternetPaymentServices service,@PathVariable ("pass") String pass,@PathVariable ("name") String name) {
 
        System.out.println("in add service" + service);
+       Response response = new Response();
+       boolean valid=adminRegistration.SignIn(name, pass);
+		if(!valid)
+		{
+			 response.setStatus(false);
+	            response.setMessage("invalid password or username");
+	            response.object=null;
+	            return response;
+		}
+
        boolean res = addService.addService(service);
-      Response response = new Response();
       if (!res) {
            response.setStatus(false);
            response.setMessage("Service Already Exists");
@@ -51,12 +73,21 @@ public class ServiceController {
        response.setMessage("Service added successfully");
        return response;
    }
-  @PostMapping("/addDonations")
-  public Response addService(@RequestBody Donations service) {
+  @PostMapping("/addDonations/{name}/{pass}")
+  public Response addService(@RequestBody Donations service,@PathVariable ("pass") String pass,@PathVariable ("name") String name) {
 
        System.out.println("in add service" + service);
+       Response response = new Response();
+       boolean valid=adminRegistration.SignIn(name, pass);
+		if(!valid)
+		{
+			 response.setStatus(false);
+	            response.setMessage("invalid password or username");
+	            response.object=null;
+	            return response;
+		}
+
        boolean res = addService.addService(service);
-      Response response = new Response();
       if (!res) {
            response.setStatus(false);
            response.setMessage("Service Already Exists");
@@ -67,12 +98,22 @@ public class ServiceController {
        response.setMessage("Service added successfully");
        return response;
    }
-  @PostMapping("/addLandlineServices")
-  public Response addService(@RequestBody LandlineServices service) {
+
+  @PostMapping("/addQuarterReceipt/{name}/{pass}")
+  public Response addService(@RequestBody QuarterReceipt service,@PathVariable ("pass") String pass,@PathVariable ("name") String name) {
 
        System.out.println("in add service" + service);
+       Response response = new Response();
+       boolean valid=adminRegistration.SignIn(name, pass);
+		if(!valid)
+		{
+			 response.setStatus(false);
+	            response.setMessage("invalid password or username");
+	            response.object=null;
+	            return response;
+		}
+
        boolean res = addService.addService(service);
-      Response response = new Response();
       if (!res) {
            response.setStatus(false);
            response.setMessage("Service Already Exists");
@@ -83,28 +124,21 @@ public class ServiceController {
        response.setMessage("Service added successfully");
        return response;
    }
-  @PostMapping("/addQuarterReceipt")
-  public Response addService(@RequestBody QuarterReceipt service) {
+  @PostMapping("/addMonthlyReceipt/{name}/{pass}")
+  public Response addService(@RequestBody MonthlyReceipt service,@PathVariable ("pass") String pass,@PathVariable ("name") String name) {
 
        System.out.println("in add service" + service);
-       boolean res = addService.addService(service);
-      Response response = new Response();
-      if (!res) {
-           response.setStatus(false);
-           response.setMessage("Service Already Exists");
-           return response;
-       }
+       Response response = new Response();
+       boolean valid=adminRegistration.SignIn(name, pass);
+		if(!valid)
+		{
+			 response.setStatus(false);
+	            response.setMessage("invalid password or username");
+	            response.object=null;
+	            return response;
+		}
 
-       response.setStatus(true);
-       response.setMessage("Service added successfully");
-       return response;
-   }
-  @PostMapping("/addMonthlyReceipt")
-  public Response addService(@RequestBody MonthlyReceipt service) {
-
-       System.out.println("in add service" + service);
        boolean res = addService.addService(service);
-      Response response = new Response();
       if (!res) {
            response.setStatus(false);
            response.setMessage("Service Already Exists");
