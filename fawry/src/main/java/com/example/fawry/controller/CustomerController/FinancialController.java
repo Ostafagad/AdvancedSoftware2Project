@@ -44,7 +44,7 @@ public class FinancialController {
 		}
 		int id= DataBase.getdb1().getcustid(a)+1;
 	
-		boolean res=financialservice.PayWithWallet(wallet,id);
+		boolean res=financialservice.PayWithWallet(wallet,id,a);
 		if (!res) {
             response.setStatus(false);
             response.setMessage("Incorrect service name or provider name");
@@ -72,7 +72,7 @@ public class FinancialController {
 		}
 		int id= DataBase.getdb1().getcustid(a)+1;
 
-		boolean res=financialservice.PayWithCreditCard(creditcard,id);
+		boolean res=financialservice.PayWithCreditCard(creditcard,id,a);
 		
 		if (!res) {
             response.setStatus(false);
@@ -127,7 +127,7 @@ public class FinancialController {
 		}
 		int id= DataBase.getdb1().getcustid(a)+1;
 
-		boolean res=financialservice.AddFundsToWallet(card,id);
+		boolean res=financialservice.AddFundsToWallet(card,id,a);
 		if (!res) {
             response.setStatus(false);
             response.setMessage("Write Wallet details in acorrect way");

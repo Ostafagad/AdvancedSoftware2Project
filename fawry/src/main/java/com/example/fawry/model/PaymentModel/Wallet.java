@@ -3,25 +3,23 @@ package com.example.fawry.model.PaymentModel;
 import com.example.fawry.model.TransactionModel.Transaction;
 
 public class Wallet implements Payment {
-	private static double balance=100000;
+	private  double balance;
 	public double cost;
 	public String serviceName;
 	private String providerName;
 	private int transactionId;
+	
 
 	@Override
 	public void pay(double amount) {
 		balance-=amount;
 	}
-	public static void addfunds(double d)
+	public  void addfunds(double d)
 	{
 		
 		balance+=d;
 	}
-	public static double getbalance1() {
-		return Wallet.balance;
-	}
-	
+
 	public void setBalance(double balance) {
 		this.balance=balance;
 	}

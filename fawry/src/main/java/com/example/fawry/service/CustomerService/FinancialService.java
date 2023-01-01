@@ -14,12 +14,13 @@ import com.example.fawry.model.DiscountModel.DiscountDecorator;
 import com.example.fawry.model.PaymentModel.Cashe;
 import com.example.fawry.model.PaymentModel.CreditCard;
 import com.example.fawry.model.PaymentModel.Wallet;
+import com.example.fawry.model.RegistrationModel.Account;
 import com.example.fawry.model.ServiceModel.Services;
 import com.example.fawry.model.TransactionModel.Transaction;
 
 @Service
 public class FinancialService {
-	public boolean PayWithWallet(Wallet payment ,int id) {
+	public boolean PayWithWallet(Wallet payment ,int id,Account a) {
     	try {	
         		 if( DataBase.getdb1().validatepayment( payment)!=null) 
         		 {
@@ -31,19 +32,19 @@ public class FinancialService {
         			 if(dis!=0) {
         				 
         		
-        				 payment.setCost(payment.getCost()-(payment.getCost()*dis));
+        				 a.wallet.setCost(payment.getCost()-(payment.getCost()*dis));
   
-        				 payment.pay(payment.getCost());
+        				 a.wallet.pay(a.wallet.getCost());
         		    DataBase.getdb1().validatepayment( payment).setCost(payment.getCost());
-        			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"payment",id);
+        			 Transaction t=new Transaction(payment.getServiceName(),a.wallet.getCost(),"payment",id);
         			 payment.setTransactionId(Transaction.getTransactionId());
         			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 }
         			 else
         			 {
-        				 payment.pay(payment.getCost());
+        				 a.wallet.pay(payment.getCost());
         				  DataBase.getdb1(). validatepayment( payment).setCost(payment.getCost());
-             			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"payment",id);
+             			 Transaction t=new Transaction(payment.getServiceName(),a.wallet.getCost(),"payment",id);
              			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
              			payment.setTransactionId(Transaction.getTransactionId());
 
@@ -57,7 +58,7 @@ public class FinancialService {
         }
     	return true;
     }
-	public boolean PayWithCreditCard(CreditCard payment,int id) {
+	public boolean PayWithCreditCard(CreditCard payment,int id,Account a) {
 		try {	
     		for (Services entry :  DataBase.getdb1().providersServices){
         		 if(entry.getserviceName().toLowerCase().equals(payment.getServiceName().toLowerCase())&&
@@ -70,10 +71,10 @@ public class FinancialService {
         			 }
         			 if(dis!=0) {
         				 
-        			payment.setCost(payment.getCost()-(payment.getCost()*dis));
-        		    payment.pay(payment.getCost());
+        			a.credit.setCost(payment.getCost()-(payment.getCost()*dis));
+        			a.credit.pay(a.credit.getCost());
         			 entry.setCost(payment.getCost());
-        			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"payment",id);
+        			 Transaction t=new Transaction(payment.getServiceName(),a.credit.getCost(),"payment",id);
         			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 payment.setTransactionId(Transaction.getTransactionId());
 
@@ -81,10 +82,10 @@ public class FinancialService {
         			 else
         			 {
         				 entry.setCost(payment.getCost());
-        				  payment.pay(payment.getCost());
-             			 Transaction t=new Transaction(payment.getServiceName(),payment.getCost(),"payment",id);
+        				 a.credit.pay(payment.getCost());
+             			 Transaction t=new Transaction(payment.getServiceName(),a.credit.getCost(),"payment",id);
              			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
-            			 payment.setTransactionId(Transaction.getTransactionId());
+             			payment.setTransactionId(Transaction.getTransactionId());
 
         			 }
         			 return true;
@@ -146,9 +147,9 @@ public class FinancialService {
 
     	return true;
     }
-	public boolean AddFundsToWallet(CreditCard card,int id) {
+	public boolean AddFundsToWallet(CreditCard card,int id,Account a) {
     	try {	
-        		     card.AddFundsToWallet(CreditCard.getFunds());
+        		     card.AddFundsToWallet(CreditCard.getFunds(),a);
         		     Transaction t=new Transaction("AddToWallet",CreditCard.getFunds(),"wallet",id);
         			 DataBase.customerTransactions.put(Transaction.getTransactionId(), t);
         			 card.setTransactionId(Transaction.getTransactionId());

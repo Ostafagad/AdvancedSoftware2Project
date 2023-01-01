@@ -16,6 +16,8 @@ public class CustomerRegsration {
         try {
         	if( DataBase.getdb1().ValidateSignUp(a)) {
 			       DataBase.getdb1().cust_accounts.put(Account.custid++, a);
+			       a.wallet.setBalance(a.getWalletbalance());
+			       a.credit.setCardBalance(a.getCardbalance());
 			   
 			    
 			       

@@ -19,7 +19,9 @@ public class RefundRequestService {
    		 if(DataBase.getdb1().validateRefund( id))
    		 {
    			DataBase.getdb1().refunds.get(id).setRefundStatus("accepted");
-   			 Wallet.addfunds(DataBase.getdb1().refunds.get(id).getamount());
+   			int custid =DataBase.getdb1().refunds.get(id).getcustid();
+   			custid--;
+   			DataBase.getdb1().cust_accounts.get(custid).wallet.addfunds(DataBase.getdb1().refunds.get(id).getamount());
    			 DataBase.getdb1().refunds.remove(id);
    			 return true;
    		 }   			   		        	

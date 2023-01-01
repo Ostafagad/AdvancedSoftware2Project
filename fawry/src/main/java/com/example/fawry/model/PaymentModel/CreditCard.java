@@ -1,11 +1,12 @@
 package com.example.fawry.model.PaymentModel;
 
+import com.example.fawry.model.RegistrationModel.Account;
 import com.example.fawry.model.TransactionModel.Transaction;
 
 public class CreditCard implements Payment {
 	private String cardnumber;
 	private String password;
-	private static double cardBalance=100000.0;
+	private  double cardBalance;
 	public double cost;
 	public String serviceName;
 	private String providerName;
@@ -23,11 +24,11 @@ public class CreditCard implements Payment {
 	public void pay(double amount) {
 		cardBalance-=amount;
 	}
-    public void AddFundsToWallet(double amount) {
+    public void AddFundsToWallet(double amount,Account a) {
     	
-    	Wallet.addfunds(amount);
-    	cardBalance-=amount;
-    	walletbalance=Wallet.getbalance1();
+    	a.wallet.addfunds(amount);
+    	a.credit.setCardBalance(a.credit.getCardBalance()-amount);
+    	walletbalance=a.wallet.getbalance();
     }
     public double getwalletbalance()
 	{
